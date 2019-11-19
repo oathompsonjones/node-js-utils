@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "target": "es2018",
+        "module": "commonjs",
+        "removeComments": true,
+        "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedParameters": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noUnusedLocals": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "alwaysStrict": true,
+        "outDir": "src/JavaScript"
+    },
+    "include": [
+        "src/TypeScript/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
