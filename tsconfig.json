@@ -18,7 +18,8 @@
         "strictBindCallApply": true,
         "strictPropertyInitialization": true,
         "alwaysStrict": true,
-        "outDir": "src/JavaScript"
+        "outDir": "src/JavaScript",
+        "declaration": true
     },
     "include": [
         "src/TypeScript/**/*"
