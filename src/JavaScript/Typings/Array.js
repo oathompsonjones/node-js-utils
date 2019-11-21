@@ -2,9 +2,8 @@
 Array.prototype.filterByCount = function (occurances) {
     const arr = [];
     this.forEach((value) => {
-        if (this.getCount(value) === occurances) {
+        if (this.getCount(value) === occurances)
             arr.push(value);
-        }
     });
     return arr;
 };
@@ -44,16 +43,13 @@ Array.prototype.removeDuplicates = function () {
 Array.prototype.toListString = function () {
     let string = "";
     for (let i = 0; i < this.length; i++) {
-        string += this[i];
-        if (i === this.length - 2) {
+        string += this[i].toString();
+        if (i === this.length - 2)
             string += " and ";
-        }
-        else if (i === this.length - 1) {
+        else if (i === this.length - 1)
             string += ". ";
-        }
-        else {
+        else
             string += ", ";
-        }
     }
     return string;
 };

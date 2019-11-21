@@ -1,20 +1,16 @@
 Array.prototype.filterByCount = function (this: any[], occurances: number): any[] {
     const arr: any[] = [];
     this.forEach((value: any) => {
-        if (this.getCount(value) === occurances) {
-            arr.push(value);
-        }
+        if (this.getCount(value) === occurances) arr.push(value);
     });
     return arr;
 };
 
 Array.prototype.getModes = function (this: any[]): any[] {
     if (this.length === 0) return [];
-
     const modeMap: any = {};
     let maxCount: number = 1;
     let modes: any[] = [];
-
     for (const element of this) {
         if (!modeMap[element.id ? element.id : element]) modeMap[element.id ? element.id : element] = 1;
         else modeMap[element.id ? element.id : element]++;
@@ -27,7 +23,6 @@ Array.prototype.getModes = function (this: any[]): any[] {
             maxCount = modeMap[element.id ? element.id : element];
         }
     }
-
     return modes;
 };
 
@@ -43,20 +38,14 @@ Array.prototype.removeDuplicates = function (this: any[]): any[] {
     return [...new Set(this)];
 };
 
-Array.prototype.toListString = function (this: string[]): string {
+Array.prototype.toListString = function (this: any[]): string {
     let string: string = "";
-
     for (let i = 0; i < this.length; i++) {
-        string += this[i];
-        if (i === this.length - 2) {
-            string += " and ";
-        } else if (i === this.length - 1) {
-            string += ". ";
-        } else {
-            string += ", ";
-        }
+        string += this[i].toString();
+        if (i === this.length - 2) string += " and ";
+        else if (i === this.length - 1) string += ". ";
+        else string += ", ";
     }
-
     return string;
 };
 
