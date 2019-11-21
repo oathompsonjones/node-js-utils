@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Random {
-    constructor(lowerBound, upperBound) {
+    constructor(lowerBound, upperBound = NaN) {
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
         if (!this.upperBound) {
