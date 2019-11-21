@@ -6,35 +6,32 @@ String.prototype.toTitleCase = function () {
     return this.toLowerCase().split(" ").map((str) => str.toProperCase()).join(" ");
 };
 String.prototype.toArray = function (length) {
-    let message = this;
-    const msgArray = [];
-    if (message.length > length) {
-        let str = "";
+    let string = this;
+    const arr = [];
+    if (string.length > length) {
         let pos;
-        while (message.length > 0) {
+        let str = "";
+        while (string.length > 0) {
             // split on last newline
-            pos = message.length > length ? message.lastIndexOf("\n", length) : message.length;
+            pos = string.length > length ? string.lastIndexOf("\n", length) : string.length;
             // if there's no newlines
-            if (pos > length) {
+            if (pos > length)
                 pos = length;
-            }
-            // grab the substring, and remove from message
-            str = message.substr(0, pos);
-            message = message.substr(pos);
+            // grab the substring, and remove from string
+            str = string.substr(0, pos);
+            string = string.substr(pos);
             // push to array
-            msgArray.push(str);
+            arr.push(str);
         }
     }
-    else {
-        msgArray.push(message);
-    }
-    return msgArray;
+    else
+        arr.push(string);
+    return arr;
 };
 String.prototype.removeLastIndexOf = function (str) {
     let string = this;
     const index = string.lastIndexOf(str);
-    if (index >= 0 && index + str.length >= string.length) {
+    if (index >= 0 && index + str.length >= string.length)
         string = string.substring(0, index);
-    }
     return string;
 };
