@@ -1,19 +1,29 @@
 {
     "compilerOptions": {
         "target": "es2018",
-        "removeComments": true,
+        "module": "commonjs",
+        "removeComments": false,
         "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
         "noFallthroughCasesInSwitch": true,
         "noUnusedParameters": true,
         "forceConsistentCasingInFileNames": true,
         "strict": true,
         "noUnusedLocals": true,
         "esModuleInterop": true,
-        "outFile": "index.js",
-        "declaration": true
+        "resolveJsonModule": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "alwaysStrict": true,
+        "outDir": "src/JavaScript"
     },
     "include": [
-        "src/**/*"
+        "src/TypeScript/**/*"
     ],
-    "exclude": []
+    "exclude": [
+        "node_modules"
+    ]
 }
