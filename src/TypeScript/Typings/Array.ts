@@ -61,26 +61,9 @@ Array.prototype.toListString = function (this: string[]): string {
 };
 
 interface Array<T> {
-    /**
-     * @param occurances the number of times each item must appear in the original array.
-     * @returns an array of items which appeared in the original array a set number of times.
-     */
     filterByCount(occurances: number): any[];
-    /**
-     * @returns the most common items in the array.
-     */
     getModes(): any[];
-    /**
-     * @param value the value to count.
-     * @returns the number of times the value appears in the array.
-     */
     getCount(value: any): number;
-    /**
-     * @returns an array with all duplicated values removed.
-     */
     removeDuplicates(): any[];
-    /**
-     * @returns a string formatted as a list.
-     */
     toListString(): string;
 }

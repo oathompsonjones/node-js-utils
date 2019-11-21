@@ -56,12 +56,6 @@ Date.prototype.toUptimeString = function (this: Date): string {
 };
 
 interface Date {
-    /**
-     * @returns an object containing all data accessible from the date.
-     */
     getTimes(): { day: string; date: string; month: string; year: string; hours: string; minutes: string; seconds: string; milliseconds: string; };
-    /**
-     * @returns a string formatted to show an uptime.
-     */
     toUptimeString(): string;
 }
