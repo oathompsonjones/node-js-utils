@@ -19,7 +19,7 @@ class Stopwatch {
         return `${this.time.hours}:${this.time.minutes}:${this.time.seconds}.${this.time.milliseconds}`;
     }
     get elapsedMilliseconds() {
-        return Math.floor(this.endTime - this.startTime);
+        return Math.floor((this.endTime || Date.now()) - (this.startTime || Date.now()));
     }
     get elapsedSeconds() {
         return Math.floor(this.elapsedMilliseconds / 1000);

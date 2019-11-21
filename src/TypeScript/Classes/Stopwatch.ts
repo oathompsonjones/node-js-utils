@@ -20,7 +20,7 @@ export class Stopwatch {
     }
 
     get elapsedMilliseconds(): number {
-        return Math.floor(this.endTime - this.startTime);
+        return Math.floor((this.endTime || Date.now()) - (this.startTime || Date.now()));
     }
 
     get elapsedSeconds(): number {
