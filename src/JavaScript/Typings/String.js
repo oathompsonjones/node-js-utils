@@ -6,27 +6,7 @@ String.prototype.toTitleCase = function () {
     return this.toLowerCase().split(" ").map((str) => str.toProperCase()).join(" ");
 };
 String.prototype.toArray = function (length) {
-    let string = this;
-    const arr = [];
-    if (string.length > length) {
-        let pos;
-        let str = "";
-        while (string.length > 0) {
-            // split on last newline
-            pos = string.length > length ? string.lastIndexOf("\n", length) : string.length;
-            // if there's no newlines
-            if (pos > length)
-                pos = length;
-            // grab the substring, and remove from string
-            str = string.substr(0, pos);
-            string = string.substr(pos);
-            // push to array
-            arr.push(str);
-        }
-    }
-    else
-        arr.push(string);
-    return arr;
+    return [""].concat.apply([], this.split("").map((_x, i) => { return i % length ? [] : this.slice(i, i + length); }, this));
 };
 String.prototype.removeLastIndexOf = function (str) {
     let string = this;
