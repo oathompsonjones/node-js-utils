@@ -1,16 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Random {
-    constructor(lowerBound, upperBound = NaN) {
-        this.lowerBound = lowerBound;
-        this.upperBound = upperBound;
-        if (!this.upperBound) {
-            this.upperBound = this.lowerBound;
-            this.lowerBound = 0;
-        }
+    integer(lowerBound, upperBound) {
+        return Math.floor(Math.random() * upperBound) + lowerBound;
     }
-    nextInt() {
-        return Math.floor(Math.random() * this.upperBound + this.lowerBound);
+    float() {
+        return Math.random();
+    }
+    string(length) {
+        let str = "";
+        for (let i = 0; i < length; i++)
+            str += this.integer(1, 2) % 2 ? this.integer(1, 36).toString(36).toUpperCase() : this.integer(1, 36).toString(36);
+        return str;
     }
 }
 exports.Random = Random;

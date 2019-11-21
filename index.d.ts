@@ -19,10 +19,9 @@ declare module "node-js-utils" {
     }
 
     export class Random {
-        private lowerBound: number;
-        private upperBound?: number;
-        constructor(lowerBound: number, upperBound?: number);
-        nextInt(): number;
+        integer(lowerBound: number, upperBound: number): number;
+        float(): number;
+        string(length: number): string;
     }
 
     // Typings
