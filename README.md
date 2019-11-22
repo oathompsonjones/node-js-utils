@@ -1,53 +1,58 @@
 # node-js-utils
 A collection of useful functions for node.js.
 
-## Classes
+## Examples
 
-### Stopwatch Class
-- private startTime: number
-- private endTime: number
-- public start(): void
-- public stop(): void
-- public reset(): void
-- public toString(): string
-- readonly elapsedMilliseconds: number
-- readonly elapsedSeconds: number
-- readonly elapsedMinutes: number
-- readonly elapsedHours: number
-- readonly time:
-    - hours: number
-    - minutes: number
-    - seconds: number
-    - milliseconds: number
+### Stopwatch
 
-### Random Class
-- public integer(lowerBound: number, upperBound: number): number
-- public float(): number
-- public string(length: number): string
+#### JavaScript
+```js
+const { Stopwatch } = require("node-js-utils");
 
-## Typings
+const watch = new Stopwatch();
 
-### Array
-- filterByCount(occurances: number): any[]
-- getModes(): any[]
-- getCount(value: any): number
-- removeDuplicates(): any[]
-- toListString(): string
+console.log(watch.elapsedMilliseconds);
+// Output: 0
 
-### Date 
-- getTimes():
-    - day: string
-    - date: string
-    - month: string
-    - year: string
-    - hours: string
-    - minutes: string
-    - seconds: string
-    - milliseconds: string
-- toUptimeString(): string
+watch.start();
+setTimeout(() => {
+    console.log(watch.elapsedMilliseconds);
+    // Output: 1000
 
-### String
-- toProperCase(): string
-- toTitleCase(): string
-- toArray(length: number): string[]
-- removeLastIndexOf(str: string): string
+    watch.stop();
+
+    console.log(watch.elapsedMilliseconds);
+    // Output: 1000
+
+    watch.reset();
+
+    console.log(watch.elapsedMilliseconds);
+    // Output: 0
+}, 1000);
+```
+
+#### TypeScript
+```ts
+import { Stopwatch } from "node-js-utils";
+
+const watch: Stopwatch = new Stopwatch();
+
+console.log(watch.elapsedMilliseconds);
+// Output: 0
+
+watch.start();
+setTimeout(() => {
+    console.log(watch.elapsedMilliseconds);
+    // Output: 1000
+
+    watch.stop();
+
+    console.log(watch.elapsedMilliseconds);
+    // Output: 1000
+
+    watch.reset();
+
+    console.log(watch.elapsedMilliseconds);
+    // Output: 0
+}, 1000);
+```
