@@ -5,7 +5,7 @@ A collection of useful functions for node.js.
 
 ### Stopwatch Class
 - private startTime: number
-- private endTime: number 
+- private endTime: number
   
 - public start(): void
 - public stop(): void
