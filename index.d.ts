@@ -1,4 +1,4 @@
-declare module "node-js-utils" {
+declare module "simple-node-utils" {
     /**
      * @class
      * @classdesc Creates a stopwatch.
