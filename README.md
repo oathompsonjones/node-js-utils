@@ -173,6 +173,74 @@ console.log(rand.string(10));
 //          e.g. nH97IPTqFN
 ```
 
+### Array
+
+#### JavaScript
+```js
+require("node-js-utils");
+
+const arr = [ "apple", "bag", "cat", "dog", "egg", "apple", "bag" ];
+
+console.log(arr.filterByCount(1));
+// Output: [ 'cat', 'dog', 'egg' ]
+console.log(arr.getModes());
+// Output: [ 'apple', 'bag' ]
+console.log(arr.getCount("bag"));
+// Output: 2
+console.log(arr.removeDuplicates());
+// Output: [ 'apple', 'bag', 'cat', 'dog', 'egg' ]
+console.log(arr.toListString());
+// Output: apple, bag, cat, dog, egg, apple and bag.
+```
+
+#### TypeScript
+```ts
+import "node-js-utils";
+
+const arr: string[] = [ "apple", "bag", "cat", "dog", "egg", "apple", "bag" ];
+
+console.log(arr.filterByCount(1));
+// Output: [ 'cat', 'dog', 'egg' ]
+console.log(arr.getModes());
+// Output: [ 'apple', 'bag' ]
+console.log(arr.getCount("bag"));
+// Output: 2
+console.log(arr.removeDuplicates());
+// Output: [ 'apple', 'bag', 'cat', 'dog', 'egg' ]
+console.log(arr.toListString());
+// Output: apple, bag, cat, dog, egg, apple and bag.
+```
+
+### Date
+
+#### JavaScript
+```js
+require("node-js-utils");
+
+// Numbers taken from thee result of Date.now() at two different times
+const date = new Date(1574458061847);
+const _date = new Date(1574458125870 - 1574458061847);
+
+console.log(_date.toUptimeString());
+// Output: 1m, 4s, 23ms
+console.log(date.getTimes());
+// Output: { day: 'Friday', date: '22', month: '11', year: '2019', hours: '21', minutes: '27', seconds: '41', milliseconds: '847' }
+```
+
+#### TypeScript
+```ts
+import "node-js-utils";
+
+// Numbers taken from thee result of Date.now() at two different times
+const date: Date = new Date(1574458061847);
+const _date: Date = new Date(1574458125870 - 1574458061847);
+
+console.log(_date.toUptimeString());
+// Output: 1m, 4s, 23ms
+console.log(date.getTimes());
+// Output: { day: 'Friday', date: '22', month: '11', year: '2019', hours: '21', minutes: '27', seconds: '41', milliseconds: '847' }
+```
+
 ### String
 
 #### JavaScript
