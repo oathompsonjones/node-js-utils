@@ -172,3 +172,37 @@ console.log(rand.string(10));
 // Output: Random string with 10 characters
 //          e.g. nH97IPTqFN
 ```
+
+### String
+
+#### JavaScript
+```js
+require("node-js-utils");
+
+const str = "hello world";
+
+console.log(str.toProperCase());
+// Output: Hello world
+console.log(str.toTitleCase());
+// Output: Hello World
+console.log(str.toArray(1));
+// Output: [ 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd' ]
+console.log(str.removeLastIndexOf("o"));
+// Output: hello wrld
+```
+
+#### TypeScript
+``` ts
+import "node-js-utils";
+
+const str: string = "hello world";
+
+console.log(str.toProperCase());
+// Output: Hello world
+console.log(str.toTitleCase());
+// Output: Hello World
+console.log(str.toArray(1));
+// Output: [ 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd' ]
+console.log(str.removeLastIndexOf("o"));
+// Output: hello wrld
+```
