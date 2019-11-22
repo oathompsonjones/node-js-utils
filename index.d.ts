@@ -9,19 +9,19 @@ declare module "node-js-utils" {
         /**
          * Starts the stopwatch.
          */
-        start(): void;
+        public start(): void;
         /**
          * Stops the stopwatch.
          */
-        stop(): void;
+        public stop(): void;
         /**
          * Resets the stopwatch.
          */
-        reset(): void;
+        public reset(): void;
         /**
          * @returns {string} a string reprentation of the time elapsed.
          */
-        toString(): string;
+        public toString(): string;
         /**
          * @returns {number} the total number of milliseconds elapsed.
          */
@@ -59,16 +59,16 @@ declare module "node-js-utils" {
          * @param {number} lowerBound the lowest inclusive value the number can be.
          * @param {number} upperBound thee highest inclusive value the number can be.
          */
-        integer(lowerBound: number, upperBound: number): number;
+        public integer(lowerBound: number, upperBound: number): number;
         /**
          * @returns {number} a random floating point number between 0 and 1.
          */
-        float(): number;
+        public float(): number;
         /**
          * @returns {string} a string of set length made up of random numbers and letters (both upper and lower case).
          * @param {number} length the length of the random string.
          */
-        string(length: number): string;
+        public string(length: number): string;
     }
 
     // Typings
