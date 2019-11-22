@@ -141,7 +141,6 @@ declare module "node-js-utils" {
             /**
              * @returns {string[]} an array of the string broken down into smaller strings.
              * @param {number} length the length of each string in the array.
-             * @description may cause issues with substrings of length <= 10.
              */
             toArray(length: number): string[];
             /**
