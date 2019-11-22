@@ -6,12 +6,10 @@ A collection of useful functions for node.js.
 ### Stopwatch Class
 - private startTime: number
 - private endTime: number
-  
 - public start(): void
 - public stop(): void
 - public reset(): void
 - public toString(): string
-  
 - readonly elapsedMilliseconds: number
 - readonly elapsedSeconds: number
 - readonly elapsedMinutes: number
