@@ -136,3 +136,39 @@ setTimeout(() => {
     // Output: 0:0:0.0
 }, 1000);
 ```
+
+### Random
+
+#### JavaScript
+```js
+const { Random } = require("node-js-utils");
+
+const rand = new Random();
+
+console.log(rand.float());
+// Output: Random floating point number between 0 and 1
+//          e.g. 0.16717168179446684
+console.log(rand.integer(1, 10));
+// Output: Random integer between 1 and 10
+//          e.g. 6
+console.log(rand.string(10));
+// Output: Random string with 10 characters
+//          e.g. nH97IPTqFN
+```
+
+#### TypeScript
+```ts
+import { Random } from "node-js-utils";
+
+const rand: Random = new Random();
+
+console.log(rand.float());
+// Output: Random floating point number between 0 and 1
+//          e.g. 0.16717168179446684
+console.log(rand.integer(1, 10));
+// Output: Random integer between 1 and 10
+//          e.g. 6
+console.log(rand.string(10));
+// Output: Random string with 10 characters
+//          e.g. nH97IPTqFN
+```
