@@ -1,5 +1,5 @@
 {
-  "name": "node-js-utils",
+  "name": "@oathompsonjones/node-js-utils",
   "version": "1.0.0",
   "description": "A collection of useful functions for node.js.",
   "main": "dist/index.js",
