@@ -1,7 +1,9 @@
 # node-js-utils
 A collection of useful functions for node.js.
 
-## Stopwatch Class
+## Classes
+
+### Stopwatch Class
 - private startTime: number        
 - private endTime: number        
 - public start(): void        
@@ -18,19 +20,21 @@ A collection of useful functions for node.js.
     - seconds: number        
     - milliseconds: number        
 
-# Random Class
+### Random Class
 - public integer(lowerBound: number, upperBound: number): number        
 - public float(): number        
-- public string(length: number): string        
+- public string(length: number): string      
 
-# Array
+## Typings
+
+### Array
 - filterByCount(occurances: number): any[]        
 - getModes(): any[]        
 - getCount(value: any): number        
 - removeDuplicates(): any[]        
 - toListString(): string        
 
-# Date 
+### Date 
 - getTimes():    
     - day: string        
     - date: string        
@@ -42,7 +46,7 @@ A collection of useful functions for node.js.
     - milliseconds: string        
 - toUptimeString(): string         
 
-# String
+### String
 - toProperCase(): string        
 - toTitleCase(): string        
 - toArray(length: number): string[]        
