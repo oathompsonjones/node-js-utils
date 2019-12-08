@@ -6,7 +6,23 @@ String.prototype.toTitleCase = function () {
     return this.toLowerCase().split(" ").map((str) => str.toProperCase()).join(" ");
 };
 String.prototype.toArray = function (length) {
-    return [""].concat.apply([], this.split("").map((_x, i) => { return i % length ? [] : this.slice(i, i + length); }, this));
+    let message = this;
+    const msgArray = [];
+    if (message.length > length) {
+        let str = "";
+        let pos;
+        while (message.length > 0) {
+            pos = message.length > length ? message.lastIndexOf("\n", length) : message.length;
+            if (pos > length)
+                pos = length;
+            str = message.substr(0, pos);
+            message = message.substr(pos);
+            msgArray.push(str);
+        }
+    }
+    else
+        msgArray.push(message);
+    return msgArray;
 };
 String.prototype.removeLastIndexOf = function (str) {
     let string = this;

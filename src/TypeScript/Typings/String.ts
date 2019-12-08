@@ -7,7 +7,20 @@ String.prototype.toTitleCase = function (this: string): string {
 };
 
 String.prototype.toArray = function (this: string, length: number): string[] {
-    return [""].concat.apply([], this.split("").map((_x, i) => { return i % length ? [] : this.slice(i, i + length) }, this));
+    let message: string = this;
+    const msgArray: string[] = [];
+    if (message.length > length) {
+        let str: string = "";
+        let pos: number;
+        while (message.length > 0) {
+            pos = message.length > length ? message.lastIndexOf("\n", length) : message.length;
+            if (pos > length) pos = length;
+            str = message.substr(0, pos);
+            message = message.substr(pos);
+            msgArray.push(str);
+        }
+    } else msgArray.push(message);
+    return msgArray;
 };
 
 String.prototype.removeLastIndexOf = function (this: string, str: string): string {
