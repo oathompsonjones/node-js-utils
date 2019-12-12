@@ -28,6 +28,6 @@ String.prototype.removeLastIndexOf = function (str) {
     let string = this;
     const index = string.lastIndexOf(str);
     if (index >= 0)
-        string = string.substring(0, index) + string.substring(index + 1, string.length);
+        string = string.substring(0, index);
     return string;
 };

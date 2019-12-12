@@ -26,7 +26,7 @@ String.prototype.toArray = function (this: string, length: number): string[] {
 String.prototype.removeLastIndexOf = function (this: string, str: string): string {
     let string: string = this;
     const index: number = string.lastIndexOf(str);
-    if (index >= 0) string = string.substring(0, index) + string.substring(index + 1, string.length);
+    if (index >= 0) string = string.substring(0, index);
     return string;
 };
 
