@@ -7,7 +7,7 @@ String.prototype.toTitleCase = function (this: string): string {
 };
 
 String.prototype.toCamelCase = function (this: string): string {
-    return this.toTitleCase().replace(/ /g, "").replace(this.split("")[0], this.split("")[0].toLowerCase());
+    return this.toTitleCase().replace(/ /g, "").replace(this.split("")[0].toUpperCase(), this.split("")[0].toLowerCase());
 };
 
 String.prototype.toPascalCase = function (this: string): string {

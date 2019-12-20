@@ -6,7 +6,7 @@ String.prototype.toTitleCase = function () {
     return this.toLowerCase().split(" ").map((str) => str.toSentenceCase()).join(" ");
 };
 String.prototype.toCamelCase = function () {
-    return this.toTitleCase().replace(/ /g, "").replace(this.split("")[0], this.split("")[0].toLowerCase());
+    return this.toTitleCase().replace(/ /g, "").replace(this.split("")[0].toUpperCase(), this.split("")[0].toLowerCase());
 };
 String.prototype.toPascalCase = function () {
     return this.toTitleCase().replace(/ /g, "");
