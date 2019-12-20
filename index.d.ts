@@ -129,15 +129,35 @@ declare module "simple-node-utils" {
 
         export interface String {
             /**
-             * @returns {string} the string with the first letter set to upper case with the rest set to lower case.
+             * @returns {string} the string Sentence case.
              * @example "hello world" => "Hello world"
              */
-            toProperCase(): string;
+            toSentenceCase(): string;
             /**
-             * @returns {string} the string with every word set to lower case, but starting with upper case.
+             * @returns {string} the string in Title Case.
              * @example "hello world" => "Hello World"
              */
             toTitleCase(): string;
+            /**
+             * @returns {string} the string in camelCase.
+             * @example "hello world" => "helloWorld"
+             */
+            toCamelCase(): string;
+            /**
+             * @returns {string} the string in PascalCase.
+             * @example "hello world" => "HelloWorld"
+             */
+            toPascalCase(): string;
+            /**
+             * @returns {string} the string in hyphen-case.
+             * @example "hello world" => "hello-world"
+             */
+            toHyphenCase(): string;
+            /**
+             * @returns {string} the string in snake_case.
+             * @example "hello world" => "hello_world"
+             */
+            toSnakeCase(): string;
             /**
              * @returns {string[]} an array of the string broken down into smaller strings.
              * @param {number} length the length of each string in the array.

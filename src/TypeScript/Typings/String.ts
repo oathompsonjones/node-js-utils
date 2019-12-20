@@ -1,9 +1,25 @@
-String.prototype.toProperCase = function (this: string): string {
+String.prototype.toSentenceCase = function (this: string): string {
     return this.toLowerCase().replace(this.split("")[0], this.split("")[0].toUpperCase());
 };
 
 String.prototype.toTitleCase = function (this: string): string {
-    return this.toLowerCase().split(" ").map((str) => str.toProperCase()).join(" ");
+    return this.toLowerCase().split(" ").map((str) => str.toSentenceCase()).join(" ");
+};
+
+String.prototype.toCamelCase = function (this: string): string {
+    return this.toTitleCase().replace(/ /g, "").replace(this.split("")[0], this.split("")[0].toLowerCase());
+};
+
+String.prototype.toPascalCase = function (this: string): string {
+    return this.toTitleCase().replace(/ /g, "");
+};
+
+String.prototype.toHyphenCase = function (this: string): string {
+    return this.toLowerCase().replace(/ /g, "-");
+};
+
+String.prototype.toSnakeCase = function (this: string): string {
+    return this.toLowerCase().replace(/ /g, "_");
 };
 
 String.prototype.toArray = function (this: string, length: number): string[] {
@@ -31,8 +47,12 @@ String.prototype.removeLastIndexOf = function (this: string, str: string): strin
 };
 
 interface String {
-    toProperCase(): string;
+    toSentenceCase(): string;
     toTitleCase(): string;
+    toCamelCase(): string;
+    toPascalCase(): string;
+    toHyphenCase(): string;
+    toSnakeCase(): string;
     toArray(length: number): string[];
     removeLastIndexOf(str: string): string;
 }

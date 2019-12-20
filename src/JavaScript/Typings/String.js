@@ -1,9 +1,21 @@
 "use strict";
-String.prototype.toProperCase = function () {
+String.prototype.toSentenceCase = function () {
     return this.toLowerCase().replace(this.split("")[0], this.split("")[0].toUpperCase());
 };
 String.prototype.toTitleCase = function () {
-    return this.toLowerCase().split(" ").map((str) => str.toProperCase()).join(" ");
+    return this.toLowerCase().split(" ").map((str) => str.toSentenceCase()).join(" ");
+};
+String.prototype.toCamelCase = function () {
+    return this.toTitleCase().replace(/ /g, "").replace(this.split("")[0], this.split("")[0].toLowerCase());
+};
+String.prototype.toPascalCase = function () {
+    return this.toTitleCase().replace(/ /g, "");
+};
+String.prototype.toHyphenCase = function () {
+    return this.toLowerCase().replace(/ /g, "-");
+};
+String.prototype.toSnakeCase = function () {
+    return this.toLowerCase().replace(/ /g, "_");
 };
 String.prototype.toArray = function (length) {
     let message = this;
