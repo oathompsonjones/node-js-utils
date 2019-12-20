@@ -249,10 +249,18 @@ require("node-js-utils");
 
 const str = "hello world";
 
-console.log(str.toProperCase());
+console.log(str.toSentenceCase());
 // Output: 'Hello world'
 console.log(str.toTitleCase());
 // Output: 'Hello World'
+console.log(str.toCamelCase());
+// Output: 'helloWorld'
+console.log(str.toPascalCase());
+// Output: 'helloWorld'
+console.log(str.toHyphenCase());
+// Output: 'hello-world'
+console.log(str.toSnakeCase());
+// Output: 'hello_world'
 console.log(str.toArray(1));
 // Output: [ 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd' ]
 console.log(str.removeLastIndexOf("o"));
@@ -265,10 +273,18 @@ import "node-js-utils";
 
 const str: string = "hello world";
 
-console.log(str.toProperCase());
+console.log(str.toSentenceCase());
 // Output: 'Hello world'
 console.log(str.toTitleCase());
 // Output: 'Hello World'
+console.log(str.toCamelCase());
+// Output: 'helloWorld'
+console.log(str.toPascalCase());
+// Output: 'helloWorld'
+console.log(str.toHyphenCase());
+// Output: 'hello-world'
+console.log(str.toSnakeCase());
+// Output: 'hello_world'
 console.log(str.toArray(1));
 // Output: [ 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd' ]
 console.log(str.removeLastIndexOf("o"));
