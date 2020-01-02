@@ -97,6 +97,11 @@ declare module "simple-node-utils" {
              * @description the last two items are separated by "and" instead of ", " and the list ends in ".".
              */
             toListString(): string;
+            /**
+             * @returns {any[][]} an array of smaller arrays.
+             * @param {number} maxLength the maximum length of the smaller arrays.
+             */
+            split(maxLength: number): any[][];
         }
 
         export interface Date {

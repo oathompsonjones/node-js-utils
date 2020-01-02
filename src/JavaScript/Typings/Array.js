@@ -53,3 +53,9 @@ Array.prototype.toListString = function () {
     }
     return string;
 };
+Array.prototype.split = function (maxLength) {
+    let output = [];
+    while (this.length)
+        output.push(this.splice(0, maxLength));
+    return output;
+};

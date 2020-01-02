@@ -49,10 +49,17 @@ Array.prototype.toListString = function (this: any[]): string {
     return string;
 };
 
+Array.prototype.split = function (this: any[], maxLength: number): any[][] {
+    let output: any[][] = [];
+    while (this.length) output.push(this.splice(0, maxLength));
+    return output;
+}
+
 interface Array<T> {
     filterByCount(occurances: number): any[];
     getModes(): any[];
     getCount(value: any): number;
     removeDuplicates(): any[];
     toListString(): string;
+    split(maxLength: number): any[][];
 }
