@@ -2,7 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Random {
     integer(lowerBound, upperBound) {
-        return Math.floor(Math.random() * upperBound) + lowerBound;
+        const max = Math.floor(upperBound) + 1;
+        const min = Math.ceil(lowerBound);
+        return Math.floor(Math.random() * (max - min)) + min;
     }
     float() {
         return Math.random();

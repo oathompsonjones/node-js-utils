@@ -1,6 +1,8 @@
 export class Random {
     integer(lowerBound: number, upperBound: number): number {
-        return Math.floor(Math.random() * upperBound) + lowerBound;
+        const max = Math.floor(upperBound) + 1;
+        const min = Math.ceil(lowerBound);
+        return Math.floor(Math.random() * (max - min)) + min;
     }
 
     float(): number {
