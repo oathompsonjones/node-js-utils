@@ -174,5 +174,13 @@ declare module "simple-node-utils" {
              */
             removeLastIndexOf(str: string): string;
         }
+
+        export interface Object {
+            /**
+             * @returns {boolean} whether or not the objects are equal.
+             * @param {object} obj the object to compare.
+             */
+            equals: (obj: Object) => boolean;
+        }
     }
 }

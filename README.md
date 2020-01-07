@@ -290,3 +290,55 @@ console.log(str.toArray(1));
 console.log(str.removeLastIndexOf("o"));
 // Output: 'hello wrld'
 ```
+
+### Object
+
+#### JavaScript
+``` js
+require("node-js-utils");
+
+const obj1 = {
+    hello: "world"
+};
+
+const obj2 = {
+    hello: "world"
+};
+
+const obj3 = {
+    hello: "world",
+    world: "hello"
+};
+
+console.log(obj1 === obj2);
+// Output: false
+console.log(obj1.equals(obj2));
+// Output: true
+console.log(obj1.equals(obj3));
+// Output: false
+```
+
+#### TypeScript
+``` ts
+import "node-js-utils";
+
+const obj1: Object = {
+    hello: "world"
+};
+
+const obj2: Object = {
+    hello: "world"
+};
+
+const obj3 = {
+    hello: "world",
+    world: "hello"
+};
+
+console.log(obj1 === obj2);
+// Output: false
+console.log(obj1.equals(obj2));
+// Output: true
+console.log(obj1.equals(obj3));
+// Output: false
+```
