@@ -53,7 +53,7 @@ Array.prototype.split = function (this: any[], maxLength: number): any[][] {
     let output: any[][] = [];
     while (this.length) output.push(this.splice(0, maxLength));
     return output;
-}
+};
 
 interface Array<T> {
     filterByCount(occurances: number): any[];
