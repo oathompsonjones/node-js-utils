@@ -18,7 +18,7 @@ Date.prototype.toUptimeString = function (times = []) {
             time = `${this.getUTCMinutes()}m, ${this.getUTCSeconds()}s, ${this.getUTCMilliseconds()}ms`;
         if (this.getUTCHours() > 0)
             time = `${this.getUTCHours()}h, ${this.getUTCMinutes()}m, ${this.getUTCSeconds()}s`;
-        if ((this.getUTCDate() - 1) > 0)
+        if (((this.getUTCDate() - 1) % 7) > 0)
             time = `${this.getUTCDate() - 1}d, ${this.getUTCHours()}h, ${this.getUTCMinutes()}m`;
         if (weeks > 0)
             time = `${weeks}w, ${(this.getUTCDate() - 1) % 7}d, ${this.getUTCHours()}h`;
@@ -38,8 +38,13 @@ Date.prototype.toUptimeString = function (times = []) {
             arr.push(`${this.getUTCMonth()}mo`);
         if (times.includes("w") && (clean ? weeks > 0 : true))
             arr.push(`${weeks}w`);
-        if (times.includes("d") && (clean ? (this.getUTCDate() - 1) > 0 : true))
-            arr.push(`${(this.getUTCDate() - 1) & 7}d`);
+        console.log(times.includes("d"));
+        console.log(clean);
+        console.log((this.getUTCDate() - 1) % 7);
+        console.log((clean ? (this.getUTCDate() - 1) > 0 : true));
+        console.log(times.includes("d") && (clean ? (this.getUTCDate() - 1) > 0 : true));
+        if (times.includes("d") && (clean ? ((this.getUTCDate() - 1) % 7) > 0 : true))
+            arr.push(`${(this.getUTCDate() - 1) % 7}d`);
         if (times.includes("h") && (clean ? this.getUTCHours() > 0 : true))
             arr.push(`${this.getUTCHours()}h`);
         if (times.includes("m") && (clean ? this.getUTCMinutes() > 0 : true))
