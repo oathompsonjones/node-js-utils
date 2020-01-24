@@ -26,11 +26,6 @@ Date.prototype.toUptimeString = function (this: Date, times: ("y" | "mo" | "w" |
         if (times.includes("y") && (clean ? (this.getUTCFullYear() - 1970) > 0 : true)) arr.push(`${this.getUTCFullYear() - 1970}y`);
         if (times.includes("mo") && (clean ? this.getUTCMonth() > 0 : true)) arr.push(`${this.getUTCMonth()}mo`);
         if (times.includes("w") && (clean ? weeks > 0 : true)) arr.push(`${weeks}w`);
-        console.log(times.includes("d"));
-        console.log(clean);
-        console.log((this.getUTCDate() - 1) % 7);
-        console.log((clean ? (this.getUTCDate() - 1) > 0 : true));
-        console.log(times.includes("d") && (clean ? (this.getUTCDate() - 1) > 0 : true));
         if (times.includes("d") && (clean ? ((this.getUTCDate() - 1) % 7) > 0 : true)) arr.push(`${(this.getUTCDate() - 1) % 7}d`);
         if (times.includes("h") && (clean ? this.getUTCHours() > 0 : true)) arr.push(`${this.getUTCHours()}h`);
         if (times.includes("m") && (clean ? this.getUTCMinutes() > 0 : true)) arr.push(`${this.getUTCMinutes()}m`);
