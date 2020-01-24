@@ -128,8 +128,9 @@ declare module "simple-node-utils" {
             };
             /**
              * @returns {string} a formatted string representing how long it's been since the date.
+             * @param {string[]} times an optional array containing the times to be returned. ["full"] returns all times. ["clean"] won't return times equal to 0.
              */
-            toUptimeString(): string;
+            toUptimeString(times?: ("y" | "mo" | "w" | "d" | "h" | "m" | "s" | "ms" | "full" | "clean")[]): string;
         }
 
         export interface String {
