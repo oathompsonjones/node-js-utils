@@ -59,16 +59,16 @@ declare module "simple-node-utils" {
          * @param {number} lowerBound the lowest inclusive value the number can be.
          * @param {number} upperBound thee highest inclusive value the number can be.
          */
-        public integer(lowerBound: number, upperBound: number): number;
+        public static integer(lowerBound: number, upperBound: number): number;
         /**
          * @returns {number} a random floating point number between 0 and 1.
          */
-        public float(): number;
+        public static float(): number;
         /**
          * @returns {string} a string of set length made up of random numbers and letters (both upper and lower case).
          * @param {number} length the length of the random string.
          */
-        public string(length: number): string;
+        public static string(length: number): string;
     }
 
     // Typings
@@ -164,7 +164,7 @@ declare module "simple-node-utils" {
              */
             toSnakeCase(): string;
             /**
-             * @returns {string[]} an array of the string broken down into smaller strings.
+             * @returns {string[]} an array of strings, no longer than length, and split at the closest new line.
              * @param {number} length the length of each string in the array.
              */
             toArray(length: number): string[];
