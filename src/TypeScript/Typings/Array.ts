@@ -55,6 +55,25 @@ Array.prototype.split = function (this: any[], maxLength: number): any[][] {
     return output;
 };
 
+Array.prototype.remove = function (this: any[], value: any): any[] {
+    const newArray: any[] = [];
+    this.forEach((val) => {
+        if (val !== value) newArray.push(val);
+    });
+    return newArray;
+}
+
+Array.prototype.shuffle = function (this: any[]): any[] {
+    let unusedIndexes: number[] = [...Array(this.length).keys()];
+    const newArray: any[] = Array(this.length);
+    this.forEach((value) => {
+        const index: number = unusedIndexes[Math.floor(Math.random() * unusedIndexes.length)];
+        newArray[index] = value;
+        unusedIndexes = unusedIndexes.remove(index);
+    });
+    return newArray;
+}
+
 interface Array<T> {
     filterByCount(occurances: number): any[];
     getModes(): any[];
@@ -62,4 +81,6 @@ interface Array<T> {
     removeDuplicates(): any[];
     toListString(): string;
     split(maxLength: number): any[][];
+    remove(value: any): any[];
+    shuffle(): any[];
 }

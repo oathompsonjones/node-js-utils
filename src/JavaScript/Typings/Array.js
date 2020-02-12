@@ -59,3 +59,21 @@ Array.prototype.split = function (maxLength) {
         output.push(this.splice(0, maxLength));
     return output;
 };
+Array.prototype.remove = function (value) {
+    const newArray = [];
+    this.forEach((val) => {
+        if (val !== value)
+            newArray.push(val);
+    });
+    return newArray;
+};
+Array.prototype.shuffle = function () {
+    let unusedIndexes = [...Array(this.length).keys()];
+    const newArray = Array(this.length);
+    this.forEach((value) => {
+        const index = unusedIndexes[Math.floor(Math.random() * unusedIndexes.length)];
+        newArray[index] = value;
+        unusedIndexes = unusedIndexes.remove(index);
+    });
+    return newArray;
+};

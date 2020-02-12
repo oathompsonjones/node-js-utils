@@ -187,6 +187,10 @@ console.log(arr.removeDuplicates());
 // Output: [ 'apple', 'bag', 'cat', 'dog', 'egg' ]
 console.log(arr.toListString());
 // Output: 'apple, bag, cat, dog, egg, apple and bag.'
+console.log(arr.remove("apple"));
+// Output: [ "bag", "cat", "dog", "egg", "bag" ]
+console.log(arr.shuffle());
+// Output: The array in a random order.
 ```
 
 #### TypeScript
@@ -205,6 +209,10 @@ console.log(arr.removeDuplicates());
 // Output: [ 'apple', 'bag', 'cat', 'dog', 'egg' ]
 console.log(arr.toListString());
 // Output: 'apple, bag, cat, dog, egg, apple and bag.'
+console.log(arr.remove("apple"));
+// Output: [ "bag", "cat", "dog", "egg", "bag" ]
+console.log(arr.shuffle());
+// Output: The array in a random order.
 ```
 
 ### Date

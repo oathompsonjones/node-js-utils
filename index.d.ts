@@ -102,6 +102,15 @@ declare module "simple-node-utils" {
              * @param {number} maxLength the maximum length of the smaller arrays.
              */
             split(maxLength: number): any[][];
+            /**
+             * @returns a new array, without the value.
+             * @param value the value to remove (not an object).
+             */
+            remove(value: any): any[];
+            /**
+             * @returns {any[]} the same array, in a random order.
+             */
+            shuffle(): any[];
         }
 
         export interface Date {
