@@ -64,7 +64,7 @@ Array.prototype.remove = function (this: any[], value: any): any[] {
 }
 
 Array.prototype.shuffle = function (this: any[]): any[] {
-    let unusedIndexes: number[] = [...Array(this.length).keys()];
+    let unusedIndexes: number[] = [...this.keys()];
     const newArray: any[] = Array(this.length);
     this.forEach((value) => {
         const index: number = unusedIndexes[Math.floor(Math.random() * unusedIndexes.length)];
