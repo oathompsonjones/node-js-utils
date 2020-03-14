@@ -22,15 +22,17 @@ String.prototype.toSnakeCase = function (this: string): string {
     return this.toLowerCase().replace(/ /g, "_");
 };
 
-String.prototype.toArray = function (this: string, length: number): string[] {
+String.prototype.toArray = function (this: string, length: number, seperator: string = ""): string[] {
+    let len: number = length;
+    if (this.split(seperator).map((str) => str.length + 1).filter((num) => num > length).length) len = Math.max(...this.split(seperator).map((str) => str.length + 1));
     let message: string = this;
     const msgArray: string[] = [];
-    if (message.length > length) {
+    if (message.length > len) {
         let str: string = "";
         let pos: number;
         while (message.length > 0) {
-            pos = message.length > length ? message.lastIndexOf("\n", length) : message.length;
-            if (pos > length) pos = length;
+            pos = message.length > len ? message.lastIndexOf(seperator, len) : message.length;
+            if (pos > len) pos = len;
             str = message.substr(0, pos);
             message = message.substr(pos);
             msgArray.push(str);
@@ -53,6 +55,6 @@ interface String {
     toPascalCase(): string;
     toHyphenCase(): string;
     toSnakeCase(): string;
-    toArray(length: number): string[];
+    toArray(length: number, seperator?: string): string[];
     removeLastIndexOf(str: string): string;
 }

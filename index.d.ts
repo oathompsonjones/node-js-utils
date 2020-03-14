@@ -176,8 +176,10 @@ declare module "simple-node-utils" {
             /**
              * @returns {string[]} an array of strings, no longer than length, and split at the closest new line.
              * @param {number} length the length of each string in the array.
+             * @deprecated if the length you input is too small based on your seperator, it will be replaced with the minimum length that works.
+             * @param {string?} seperator an optional seperator.
              */
-            toArray(length: number): string[];
+            toArray(length: number, seperator?: string): string[];
             /**
              * @returns {string} the string with the last index of a given string removed.
              * @param {string} str the string to be removed.

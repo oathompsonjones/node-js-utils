@@ -17,16 +17,19 @@ String.prototype.toHyphenCase = function () {
 String.prototype.toSnakeCase = function () {
     return this.toLowerCase().replace(/ /g, "_");
 };
-String.prototype.toArray = function (length) {
+String.prototype.toArray = function (length, seperator = "") {
+    let len = length;
+    if (this.split(seperator).map((str) => str.length + 1).filter((num) => num > length).length)
+        len = Math.max(...this.split(seperator).map((str) => str.length + 1));
     let message = this;
     const msgArray = [];
-    if (message.length > length) {
+    if (message.length > len) {
         let str = "";
         let pos;
         while (message.length > 0) {
-            pos = message.length > length ? message.lastIndexOf("\n", length) : message.length;
-            if (pos > length)
-                pos = length;
+            pos = message.length > len ? message.lastIndexOf(seperator, len) : message.length;
+            if (pos > len)
+                pos = len;
             str = message.substr(0, pos);
             message = message.substr(pos);
             msgArray.push(str);

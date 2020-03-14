@@ -68,7 +68,7 @@ Array.prototype.remove = function (value) {
     return newArray;
 };
 Array.prototype.shuffle = function () {
-    let unusedIndexes = [...Array(this.length).keys()];
+    let unusedIndexes = [...this.keys()];
     const newArray = Array(this.length);
     this.forEach((value) => {
         const index = unusedIndexes[Math.floor(Math.random() * unusedIndexes.length)];
