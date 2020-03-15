@@ -1,0 +1,11 @@
+{
+    "typings": {
+        "string": {},
+        "array": {},
+        "date": {}
+    },
+    "classes": {
+        "random": {},
+        "stopwatch": {}
+    }
+}
