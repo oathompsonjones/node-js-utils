@@ -46,3 +46,9 @@ String.prototype.removeLastIndexOf = function (str) {
         string = string.substring(0, index) + string.substring(index + str.length);
     return string;
 };
+String.random = (length) => {
+    let str = "";
+    for (let i = 0; i < length; i++)
+        str += Math.floor(Math.random() * 2 + 1) % 2 ? Math.floor(Math.random() * 36 + 1).toString(36).toUpperCase() : Math.floor(Math.random() * 36 + 1).toString(36);
+    return str;
+};

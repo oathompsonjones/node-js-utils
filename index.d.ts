@@ -49,28 +49,6 @@ declare module "simple-node-utils" {
         };
     }
 
-    /**
-     * @class
-     * @classdesc Generates random numbers and strings.
-     */
-    export class Random {
-        /**
-         * @returns {number} a random number between the lower and upper bounds.
-         * @param {number} lowerBound the lowest inclusive value the number can be.
-         * @param {number} upperBound thee highest inclusive value the number can be.
-         */
-        public static integer(lowerBound: number, upperBound: number): number;
-        /**
-         * @returns {number} a random floating point number between 0 and 1.
-         */
-        public static float(): number;
-        /**
-         * @returns {string} a string of set length made up of random numbers and letters (both upper and lower case).
-         * @param {number} length the length of the random string.
-         */
-        public static string(length: number): string;
-    }
-
     // Typings
     global {
         export interface Array<T> {
@@ -185,6 +163,23 @@ declare module "simple-node-utils" {
              * @param {string} str the string to be removed.
              */
             removeLastIndexOf(str: string): string;
+        }
+
+        export interface StringConstructor {
+            /**
+             * @returns {string} A random string of given length.
+             * @param length The length of the random string.
+             */
+            random(length: number): string;
+        }
+
+        export interface Math {
+            /**
+             * @returns {number} A random number between a and b.
+             * @param a The smallest value, defaults to 0 if only one argument is passed.
+             * @param b The biggest value.
+             */
+            randomInt(a: number, b?: number): number;
         }
     }
 }
