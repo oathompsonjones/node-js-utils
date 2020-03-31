@@ -163,6 +163,10 @@ declare module "simple-node-utils" {
              * @param {string} str the string to be removed.
              */
             removeLastIndexOf(str: string): string;
+            /**
+             * @returns {string} the same sting, but with all RegExp characters escaped.
+             */
+            escapeRegExp(): string;
         }
 
         export interface StringConstructor {

@@ -52,3 +52,6 @@ String.random = (length) => {
         str += Math.floor(Math.random() * 2 + 1) % 2 ? Math.floor(Math.random() * 36 + 1).toString(36).toUpperCase() : Math.floor(Math.random() * 36 + 1).toString(36);
     return str;
 };
+String.prototype.escapeRegExp = function () {
+    return this.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+};

@@ -54,6 +54,11 @@ String.random = (length: number): string => {
     return str;
 }
 
+String.prototype.escapeRegExp = function (this: string) {
+    return this.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+
 interface String {
     toSentenceCase(): string;
     toTitleCase(): string;
@@ -63,6 +68,7 @@ interface String {
     toSnakeCase(): string;
     toArray(length: number, seperator?: string): string[];
     removeLastIndexOf(str: string): string;
+    escapeRegExp(): string;
 }
 
 interface StringConstructor {
