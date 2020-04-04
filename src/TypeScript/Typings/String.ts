@@ -23,6 +23,7 @@ String.prototype.toSnakeCase = function (this: string): string {
 };
 
 String.prototype.toArray = function (this: string, length: number, seperator: string = ""): string[] {
+    if (length < 2) return this.split("");
     let len: number = length;
     if (this.split(seperator).map((str) => str.length + 1).filter((num) => num > length).length) len = Math.max(...this.split(seperator).map((str) => str.length + 1));
     let message: string = this;

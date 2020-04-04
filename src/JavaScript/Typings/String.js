@@ -18,6 +18,8 @@ String.prototype.toSnakeCase = function () {
     return this.toLowerCase().replace(/ /g, "_");
 };
 String.prototype.toArray = function (length, seperator = "") {
+    if (length < 2)
+        return this.split("");
     let len = length;
     if (this.split(seperator).map((str) => str.length + 1).filter((num) => num > length).length)
         len = Math.max(...this.split(seperator).map((str) => str.length + 1));
