@@ -75,12 +75,12 @@ Array.prototype.shuffle = function (this: any[]): any[] {
 }
 
 interface Array<T> {
-    filterByCount(occurances: number): any[];
-    getModes(): any[];
+    filterByCount(occurances: number): Array<T>;
+    getModes(): Array<T>;
     getCount(value: any): number;
-    removeDuplicates(): any[];
+    removeDuplicates(): Array<T>;
     toListString(): string;
-    split(maxLength: number): any[][];
-    remove(value: any): any[];
-    shuffle(): any[];
+    split(maxLength: number): Array<T>[];
+    remove(value: any): Array<T>;
+    shuffle(): Array<T>;
 }

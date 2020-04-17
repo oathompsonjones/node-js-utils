@@ -53,42 +53,42 @@ declare module "simple-node-utils" {
     global {
         export interface Array<T> {
             /**
-             * @returns {any[]} an array of items appearing in the original array a set number of times.
+             * @returns {Array<T>} an array of items appearing in the original array a set number of times.
              * @param {number} occurances the number of times the items must appear in the original array.
              */
-            filterByCount(occurances: number): any[];
+            filterByCount(occurances: number): Array<T>;
             /**
-             * @returns {any[]} an array of the most common items in the original array.
+             * @returns {Array<T>} an array of the most common items in the original array.
              */
-            getModes(): any[];
+            getModes(): Array<T>;
             /**
              * @returns {number} the number of times a given value appears in the array.
              * @param {any} value the value to be counted.
              */
             getCount(value: any): number;
             /**
-             * @returns {any[]} an array of unique values.
+             * @returns {Array<T>} an array of unique values.
              */
-            removeDuplicates(): any[];
+            removeDuplicates(): Array<T>;
             /**
              * @returns {string} the array formatted into a comma separated list.
              * @description the last two items are separated by "and" instead of ", " and the list ends in ".".
              */
             toListString(): string;
             /**
-             * @returns {any[][]} an array of smaller arrays.
+             * @returns {Array<T>[]} an array of smaller arrays.
              * @param {number} maxLength the maximum length of the smaller arrays.
              */
-            split(maxLength: number): any[][];
+            split(maxLength: number): Array<T>[];
             /**
-             * @returns a new array, without the value.
+             * @returns {Array<T>} a new array, without the value.
              * @param value the value to remove (not an object).
              */
-            remove(value: any): any[];
+            remove(value: any): Array<T>;
             /**
-             * @returns {any[]} the same array, in a random order.
+             * @returns {Array<T>} the same array, in a random order.
              */
-            shuffle(): any[];
+            shuffle(): Array<T>;
         }
 
         export interface Date {
