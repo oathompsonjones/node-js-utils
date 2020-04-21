@@ -167,6 +167,10 @@ declare module "simple-node-utils" {
              * @returns {string} the same sting, but with all RegExp characters escaped.
              */
             escapeRegExp(): string;
+            /**
+             * @returns {string} the string reversed.
+             */
+            reverse(): string;
         }
 
         export interface StringConstructor {

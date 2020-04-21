@@ -53,6 +53,9 @@ String.prototype.escapeRegExp = function (this: string): string {
     return this.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 };
 
+String.prototype.reverse = function (this: string): string {
+    return this.split("").reverse().join("");
+};
 
 interface String {
     toSentenceCase(): string;
@@ -64,6 +67,7 @@ interface String {
     toArray(length: number, seperator?: string): string[];
     removeLastIndexOf(str: string): string;
     escapeRegExp(): string;
+    reverse(): string;
 }
 
 String.random = (length: number): string => {
