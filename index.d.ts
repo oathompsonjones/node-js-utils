@@ -189,5 +189,13 @@ declare module "simple-node-utils" {
              */
             randomInt(a: number, b?: number): number;
         }
+
+        export interface Number {
+            /**
+             * @returns {number} a string representation of the number with comma separation.
+             * @example 9999999 => 9,999,999
+             */
+            toReadableString(): string;
+        }
     }
 }
