@@ -49,15 +49,9 @@ String.prototype.removeLastIndexOf = function (this: string, str: string): strin
     return string;
 };
 
-String.random = (length: number): string => {
-    let str = "";
-    for (let i = 0; i < length; i++) str += Math.floor(Math.random() * 2 + 1) % 2 ? Math.floor(Math.random() * 36 + 1).toString(36).toUpperCase() : Math.floor(Math.random() * 36 + 1).toString(36);
-    return str;
-}
-
-String.prototype.escapeRegExp = function (this: string) {
+String.prototype.escapeRegExp = function (this: string): string {
     return this.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
+};
 
 
 interface String {
@@ -71,6 +65,12 @@ interface String {
     removeLastIndexOf(str: string): string;
     escapeRegExp(): string;
 }
+
+String.random = (length: number): string => {
+    let str = "";
+    for (let i = 0; i < length; i++) str += Math.floor(Math.random() * 2 + 1) % 2 ? Math.floor(Math.random() * 36 + 1).toString(36).toUpperCase() : Math.floor(Math.random() * 36 + 1).toString(36);
+    return str;
+};
 
 interface StringConstructor {
     random(length: number): string;

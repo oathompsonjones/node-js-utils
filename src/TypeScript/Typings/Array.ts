@@ -61,7 +61,7 @@ Array.prototype.remove = function (this: any[], value: any): any[] {
         if (val !== value) newArray.push(val);
     });
     return newArray;
-}
+};
 
 Array.prototype.shuffle = function (this: any[]): any[] {
     let unusedIndexes: number[] = [...this.keys()];
@@ -72,7 +72,7 @@ Array.prototype.shuffle = function (this: any[]): any[] {
         unusedIndexes = unusedIndexes.remove(index);
     });
     return newArray;
-}
+};
 
 interface Array<T> {
     filterByCount(occurances: number): Array<T>;
