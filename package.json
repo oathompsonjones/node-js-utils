@@ -1,6 +1,6 @@
 {
   "name": "simple-node-utils",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "A collection of useful functions for node.js.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,5 +9,8 @@
     "prepare": "tsc"
   },
   "author": "oathompsonjones",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "url": "https://github.com/oathompsonjones/simple-node-utils.git"
+  }
 }
