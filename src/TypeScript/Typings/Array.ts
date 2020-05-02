@@ -50,8 +50,9 @@ Array.prototype.toListString = function (this: any[]): string {
 };
 
 Array.prototype.split = function (this: any[], maxLength: number): any[][] {
+    const arr = this;
     let output: any[][] = [];
-    while (this.length) output.push(this.splice(0, maxLength));
+    while (arr.length) output.push(arr.splice(0, maxLength));
     return output;
 };
 

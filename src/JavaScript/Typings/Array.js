@@ -54,9 +54,10 @@ Array.prototype.toListString = function () {
     return string;
 };
 Array.prototype.split = function (maxLength) {
+    const arr = this;
     let output = [];
-    while (this.length)
-        output.push(this.splice(0, maxLength));
+    while (arr.length)
+        output.push(arr.splice(0, maxLength));
     return output;
 };
 Array.prototype.remove = function (value) {
