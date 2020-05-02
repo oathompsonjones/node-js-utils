@@ -54,7 +54,7 @@ Array.prototype.toListString = function () {
     return string;
 };
 Array.prototype.split = function (maxLength) {
-    const arr = this;
+    const arr = [...this];
     let output = [];
     while (arr.length)
         output.push(arr.splice(0, maxLength));
