@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Stopwatch = void 0;
 class Stopwatch {
     constructor() {
         this.startTime = 0;
