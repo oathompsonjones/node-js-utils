@@ -184,10 +184,15 @@ declare module "simple-node-utils" {
         export interface Math {
             /**
              * @returns {number} A random number between a and b.
-             * @param a The smallest value, defaults to 0 if only one argument is passed.
+             * @param a The smallest value.
              * @param b The biggest value.
              */
-            randomInt(a: number, b?: number): number;
+            randomInt(a: number, b: number): number;
+            /**
+             * @returns {number} A random number between a and b.
+             * @param b The biggest value.
+             */
+            randomInt(b: number): number;
         }
 
         export interface Number {

@@ -1,16 +1,16 @@
 {
-  "name": "simple-node-utils",
-  "version": "0.3.7",
-  "description": "A collection of useful functions for node.js.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "tsc"
-  },
-  "author": "oathompsonjones",
-  "license": "ISC",
-  "repository": {
-    "url": "https://github.com/oathompsonjones/simple-node-utils.git"
-  }
+    "name": "simple-node-utils",
+    "version": "0.3.8",
+    "description": "A collection of useful functions for node.js.",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prepare": "tsc"
+    },
+    "author": "oathompsonjones",
+    "license": "ISC",
+    "repository": {
+        "url": "https://github.com/oathompsonjones/simple-node-utils.git"
+    }
 }

@@ -7,5 +7,6 @@ Math.randomInt = (a: number, b?: number): number => {
 };
 
 interface Math {
-    randomInt(a: number, b?: number): number;
+    randomInt(a: number, b: number): number;
+    randomInt(b: number): number;
 }
