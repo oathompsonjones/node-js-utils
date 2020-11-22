@@ -1,4 +1,6 @@
-Date.prototype.getTimes = function (this: Date): { day: string; date: string; month: string; year: string; hours: string; minutes: string; seconds: string; milliseconds: string; } {
+import "../../";
+
+Date.prototype.getTimes = function (): { day: string; date: string; month: string; year: string; hours: string; minutes: string; seconds: string; milliseconds: string; } {
     const minutes: string = (this.getUTCMinutes() <= 9 ? `0${this.getUTCMinutes()}` : this.getUTCMinutes()).toString();
     const seconds: string = (this.getUTCSeconds() <= 9 ? `0${this.getUTCSeconds()}` : this.getUTCSeconds()).toString();
     const milliseconds: string = (this.getUTCMilliseconds() <= 9 ? `00${this.getUTCMilliseconds()}` : this.getUTCMilliseconds() <= 99 ? `0${this.getMilliseconds()}` : this.getUTCMilliseconds()).toString();
@@ -7,7 +9,7 @@ Date.prototype.getTimes = function (this: Date): { day: string; date: string; mo
     return time;
 };
 
-Date.prototype.toUptimeString = function (this: Date, times: ("y" | "mo" | "w" | "d" | "h" | "m" | "s" | "ms" | "full" | "clean")[] = []): string {
+Date.prototype.toUptimeString = function (times: ("y" | "mo" | "w" | "d" | "h" | "m" | "s" | "ms" | "full" | "clean")[] = ["full", "clean"]): string {
     let time: string;
     const weeks: number = (this.getUTCDate() - 1) >= 7 ? Math.floor((this.getUTCDate() - 1) / 7) : 0;
     if (!times.length) {
@@ -35,8 +37,3 @@ Date.prototype.toUptimeString = function (this: Date, times: ("y" | "mo" | "w" |
     }
     return time;
 };
-
-interface Date {
-    getTimes(): { day: string; date: string; month: string; year: string; hours: string; minutes: string; seconds: string; milliseconds: string; };
-    toUptimeString(times?: ("y" | "mo" | "w" | "d" | "h" | "m" | "s" | "ms" | "full" | "clean")[]): string;
-}

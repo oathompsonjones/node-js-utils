@@ -1,6 +1,5 @@
-module.exports.Stopwatch = require("./src/JavaScript/Classes/Stopwatch").Stopwatch;
-module.exports.Array = require("./src/JavaScript/Typings/Array");
-module.exports.Date = require("./src/JavaScript/Typings/Date");
-module.exports.String = require("./src/JavaScript/Typings/String");
-module.exports.Math = require("./src/JavaScript/Typings/Math");
-module.exports.Number = require("./src/JavaScript/Typings/Number");
+module.exports.Array = require("./src/JavaScript/Array");
+module.exports.Date = require("./src/JavaScript/Date");
+module.exports.String = require("./src/JavaScript/String");
+module.exports.Math = require("./src/JavaScript/Math");
+module.exports.Number = require("./src/JavaScript/Number");

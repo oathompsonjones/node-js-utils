@@ -1,55 +1,4 @@
 declare module "simple-node-utils" {
-    /**
-     * @class
-     * @classdesc Creates a stopwatch.
-     */
-    export class Stopwatch {
-        private startTime: number;
-        private endTime: number;
-        /**
-         * Starts the stopwatch.
-         */
-        public start(): void;
-        /**
-         * Stops the stopwatch.
-         */
-        public stop(): void;
-        /**
-         * Resets the stopwatch.
-         */
-        public reset(): void;
-        /**
-         * @returns {string} a string reprentation of the time elapsed.
-         */
-        public toString(): string;
-        /**
-         * @returns {number} the total number of milliseconds elapsed.
-         */
-        readonly elapsedMilliseconds: number;
-        /**
-         * @returns {number} the total number of seconds elapsed.
-         */
-        readonly elapsedSeconds: number;
-        /**
-         * @returns {number} the total number of minutes elapsed.
-         */
-        readonly elapsedMinutes: number;
-        /**
-         * @returns {number} the total number of hours elapsed.
-         */
-        readonly elapsedHours: number;
-        /**
-         * @returns {object} an object reprentation of the time elapsed.
-         */
-        readonly time: {
-            hours: number;
-            minutes: number;
-            seconds: number;
-            milliseconds: number;
-        };
-    }
-
-    // Typings
     global {
         export interface Array<T> {
             /**
@@ -197,8 +146,9 @@ declare module "simple-node-utils" {
 
         export interface Number {
             /**
-             * @returns {number} a string representation of the number with comma separation.
-             * @example 9999999 => 9,999,999
+             * @returns {number} a string representation of the number with space separation.
+             * @example 9999999 => 9 999 999
+             * @example 1234567890.0987654 => 1 234 567 890.0987654
              */
             toReadableString(): string;
         }

@@ -1,4 +1,6 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+require("../../");
 Array.prototype.filterByCount = function (occurances) {
     const arr = [];
     this.forEach((value) => {

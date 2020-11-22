@@ -1,21 +1,23 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+require("../../");
 String.prototype.toSentenceCase = function () {
-    return this.toLowerCase().replace(this.split("")[0], this.split("")[0].toUpperCase());
+    return this.toLowerCase().replace(this[0], this[0].toUpperCase());
 };
 String.prototype.toTitleCase = function () {
     return this.toLowerCase().split(" ").map((str) => str.toSentenceCase()).join(" ");
 };
-String.prototype.toCamelCase = function () {
-    return this.toTitleCase().replace(/ /g, "").replace(this.split("")[0].toUpperCase(), this.split("")[0].toLowerCase());
-};
 String.prototype.toPascalCase = function () {
-    return this.toTitleCase().replace(/ /g, "");
+    return this.toTitleCase().replace(/\s/g, "");
+};
+String.prototype.toCamelCase = function () {
+    return this.toPascalCase().replace(this[0].toUpperCase(), this[0].toLowerCase());
 };
 String.prototype.toHyphenCase = function () {
-    return this.toLowerCase().replace(/ /g, "-");
+    return this.toLowerCase().replace(/\s/g, "-");
 };
 String.prototype.toSnakeCase = function () {
-    return this.toLowerCase().replace(/ /g, "_");
+    return this.toLowerCase().replace(/\s/g, "_");
 };
 String.prototype.toArray = function (length, seperator = "") {
     if (length < 2)
@@ -23,7 +25,7 @@ String.prototype.toArray = function (length, seperator = "") {
     let len = length;
     if (this.split(seperator).map((str) => str.length + 1).filter((num) => num > length).length)
         len = Math.max(...this.split(seperator).map((str) => str.length + 1));
-    let message = this;
+    let message = this.toString();
     const msgArray = [];
     if (message.length > len) {
         let str = "";
@@ -42,14 +44,14 @@ String.prototype.toArray = function (length, seperator = "") {
     return msgArray;
 };
 String.prototype.removeLastIndexOf = function (str) {
-    let string = this;
+    let string = this.toString();
     const index = string.lastIndexOf(str);
     if (index >= 0)
         string = string.substring(0, index) + string.substring(index + str.length);
     return string;
 };
 String.prototype.escapeRegExp = function () {
-    return this.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return this.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 };
 String.prototype.reverse = function () {
     return this.split("").reverse().join("");

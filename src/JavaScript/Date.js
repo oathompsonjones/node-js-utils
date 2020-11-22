@@ -1,4 +1,6 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+require("../../");
 Date.prototype.getTimes = function () {
     const minutes = (this.getUTCMinutes() <= 9 ? `0${this.getUTCMinutes()}` : this.getUTCMinutes()).toString();
     const seconds = (this.getUTCSeconds() <= 9 ? `0${this.getUTCSeconds()}` : this.getUTCSeconds()).toString();
@@ -7,7 +9,7 @@ Date.prototype.getTimes = function () {
     const time = { day, date: this.getUTCDate().toString(), month: (this.getUTCMonth() + 1).toString(), year: this.getUTCFullYear().toString(), hours: this.getUTCHours().toString(), minutes, seconds, milliseconds };
     return time;
 };
-Date.prototype.toUptimeString = function (times = []) {
+Date.prototype.toUptimeString = function (times = ["full", "clean"]) {
     let time;
     const weeks = (this.getUTCDate() - 1) >= 7 ? Math.floor((this.getUTCDate() - 1) / 7) : 0;
     if (!times.length) {
