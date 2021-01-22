@@ -36,18 +36,18 @@ export function parseTime(str: string): number | null {
     times.forEach((time) => {
         if (time.match(regExp.millisecond) !== null) 
             ms += values.millisecond * parseInt(time.match(regExp.millisecond)?.[0] ?? "0");
-        else if (time.match(regExp.second) !== null) 
-            ms += values.second * parseInt(time.match(regExp.second)?.[0] ?? "0");
+        else if (time.match(regExp.month) !== null) 
+            ms += values.month * parseInt(time.match(regExp.month)?.[0] ?? "0");
         else if (time.match(regExp.minute) !== null) 
             ms += values.minute * parseInt(time.match(regExp.minute)?.[0] ?? "0");
+        else if (time.match(regExp.second) !== null) 
+            ms += values.second * parseInt(time.match(regExp.second)?.[0] ?? "0");
         else if (time.match(regExp.hour) !== null) 
             ms += values.hour * parseInt(time.match(regExp.hour)?.[0] ?? "0");
         else if (time.match(regExp.day) !== null) 
             ms += values.day * parseInt(time.match(regExp.day)?.[0] ?? "0");
         else if (time.match(regExp.week) !== null) 
             ms += values.week * parseInt(time.match(regExp.week)?.[0] ?? "0");
-        else if (time.match(regExp.month) !== null) 
-            ms += values.month * parseInt(time.match(regExp.month)?.[0] ?? "0");
         else if (time.match(regExp.year) !== null) 
             ms += values.year * parseInt(time.match(regExp.year)?.[0] ?? "0");
     });
