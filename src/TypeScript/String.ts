@@ -24,26 +24,6 @@ String.prototype.toSnakeCase = function (): string {
     return this.toLowerCase().replace(/\s/g, "_");
 };
 
-String.prototype.toArray = function (length: number, seperator: string = ""): string[] {
-    if (length < 2) return this.split("");
-    let len: number = length;
-    if (this.split(seperator).map((str) => str.length + 1).filter((num) => num > length).length) len = Math.max(...this.split(seperator).map((str) => str.length + 1));
-    let message: string = this.toString();
-    const msgArray: string[] = [];
-    if (message.length > len) {
-        let str: string = "";
-        let pos: number;
-        while (message.length > 0) {
-            pos = message.length > len ? message.lastIndexOf(seperator, len) : message.length;
-            if (pos > len) pos = len;
-            str = message.substr(0, pos);
-            message = message.substr(pos);
-            msgArray.push(str);
-        }
-    } else msgArray.push(message);
-    return msgArray;
-};
-
 String.prototype.removeLastIndexOf = function (str: string): string {
     let string: string = this.toString();
     const index: number = string.lastIndexOf(str);

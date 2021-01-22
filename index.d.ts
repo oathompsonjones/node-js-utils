@@ -101,19 +101,12 @@ declare module "simple-node-utils" {
              */
             toSnakeCase(): string;
             /**
-             * @returns {string[]} an array of strings, no longer than length, and split at the closest new line.
-             * @param {number} length the length of each string in the array.
-             * @deprecated if the length you input is too small based on your seperator, it will be replaced with the minimum length that works.
-             * @param {string?} seperator an optional seperator.
-             */
-            toArray(length: number, seperator?: string): string[];
-            /**
              * @returns {string} the string with the last index of a given string removed.
              * @param {string} str the string to be removed.
              */
             removeLastIndexOf(str: string): string;
             /**
-             * @returns {string} the same sting, but with all RegExp characters escaped.
+             * @returns {string} the same string, but with all RegExp characters escaped.
              */
             escapeRegExp(): string;
             /**
@@ -153,4 +146,11 @@ declare module "simple-node-utils" {
             toReadableString(): string;
         }
     }
+    /**
+     * @description Takes in an string representing an amount of time and returns the equivalent number of milliseconds.
+     * @param {string} str The string representation of an amount of time, e.g. "5m" = 5 minutes, "1h,5m" = 1 hour and 5 minutes.
+     * @return {number} The number of milliseconds equivalent to the input string.
+     * @return {null} If the string is invalid, the response in null.
+     */
+    export function parseTime(str: string): number | null;
 }
