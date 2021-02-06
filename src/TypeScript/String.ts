@@ -39,8 +39,8 @@ String.prototype.reverse = function (): string {
     return this.split("").reverse().join("");
 };
 
-String.random = (length: number): string => {
+String.random = function (length: number): string {
     let str = "";
-    for (let i = 0; i < length; i++) str += Math.floor(Math.random() * 2 + 1) % 2 ? Math.floor(Math.random() * 36 + 1).toString(36).toUpperCase() : Math.floor(Math.random() * 36 + 1).toString(36);
+    for (let i = 0; i < length; i++) str += Math.floor(Math.random() * 2) % 2 ? Math.floor(Math.random() * 36).toString(36).toUpperCase() : Math.floor(Math.random() * 36).toString(36);
     return str;
 };

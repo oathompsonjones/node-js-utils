@@ -32,9 +32,9 @@ String.prototype.escapeRegExp = function () {
 String.prototype.reverse = function () {
     return this.split("").reverse().join("");
 };
-String.random = (length) => {
+String.random = function (length) {
     let str = "";
     for (let i = 0; i < length; i++)
-        str += Math.floor(Math.random() * 2 + 1) % 2 ? Math.floor(Math.random() * 36 + 1).toString(36).toUpperCase() : Math.floor(Math.random() * 36 + 1).toString(36);
+        str += Math.floor(Math.random() * 2) % 2 ? Math.floor(Math.random() * 36).toString(36).toUpperCase() : Math.floor(Math.random() * 36).toString(36);
     return str;
 };
