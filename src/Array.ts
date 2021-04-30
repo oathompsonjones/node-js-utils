@@ -58,13 +58,11 @@ Array.prototype.split = function (maxLength: number): any[][] {
 };
 
 Array.prototype.remove = function (value: any): any[] {
-    const newArray: any[] = [];
-    this.forEach((val) => {
-        if (typeof val === typeof value)
-            if (typeof val === "object" && Object.equal(val, value) || val !== value)
-                newArray.push(val);
+    return this.filter((val) => {
+        if (typeof value === "object" && Object.equal(val, value)) return false;
+        else if (val === value) return false;
+        return true;
     });
-    return newArray;
 };
 
 Array.prototype.shuffle = function (): any[] {
