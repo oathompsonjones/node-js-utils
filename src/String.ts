@@ -1,4 +1,4 @@
-import "../../";
+import "../";
 
 String.prototype.toSentenceCase = function (): string {
     return this.toLowerCase().replace(this[0], this[0].toUpperCase());

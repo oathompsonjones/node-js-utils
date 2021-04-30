@@ -1,9 +1,9 @@
-import "../../";
+import "../";
 
-Array.prototype.filterByCount = function (occurances: number): any[] {
+Array.prototype.filterByCount = function (occurrences: number): any[] {
     const arr: any[] = [];
     this.forEach((value: any) => {
-        if (this.getCount(value) === occurances) arr.push(value);
+        if (this.getCount(value) === occurrences) arr.push(value);
     });
     return arr;
 };
@@ -60,7 +60,9 @@ Array.prototype.split = function (maxLength: number): any[][] {
 Array.prototype.remove = function (value: any): any[] {
     const newArray: any[] = [];
     this.forEach((val) => {
-        if (val !== value) newArray.push(val);
+        if (typeof val === typeof value)
+            if (typeof val === "object" && Object.equal(val, value) || val !== value)
+                newArray.push(val);
     });
     return newArray;
 };

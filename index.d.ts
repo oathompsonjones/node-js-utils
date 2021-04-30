@@ -145,6 +145,15 @@ declare module "simple-node-utils" {
              */
             toReadableString(): string;
         }
+
+        export interface ObjectConstructor {
+            /**
+             * @returns {boolean} A boolean value stating whether or not the two objects are equal.
+             * @param obj1 The first object.
+             * @param obj2 The second object.
+             */
+            equal(obj1: object, obj2: object): boolean;
+        }
     }
     /**
      * @description Takes in an string representing an amount of time and returns the equivalent number of milliseconds.

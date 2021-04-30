@@ -1,6 +1,7 @@
-module.exports.Array = require("./src/JavaScript/Array");
-module.exports.Date = require("./src/JavaScript/Date");
-module.exports.String = require("./src/JavaScript/String");
-module.exports.Math = require("./src/JavaScript/Math");
-module.exports.Number = require("./src/JavaScript/Number");
-module.exports.parseTime = require("./src/JavaScript/Utils").parseTime;
+module.exports.Array = require("./build/Array");
+module.exports.Date = require("./build/Date");
+module.exports.Math = require("./build/Math");
+module.exports.Number = require("./build/Number");
+module.exports.Object = require("./build/Object")
+module.exports.parseTime = require("./build/Utils").parseTime;
+module.exports.String = require("./build/String");

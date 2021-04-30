@@ -1,4 +1,4 @@
-import "../../";
+import "../";
 
 Date.prototype.getTimes = function (): { day: string; date: string; month: string; year: string; hours: string; minutes: string; seconds: string; milliseconds: string; } {
     const minutes: string = (this.getUTCMinutes() <= 9 ? `0${this.getUTCMinutes()}` : this.getUTCMinutes()).toString();

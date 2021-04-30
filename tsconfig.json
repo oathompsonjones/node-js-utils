@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es2018",
+        "target": "esNext",
         "module": "commonjs",
         "removeComments": false,
         "noImplicitReturns": true,
@@ -18,12 +18,9 @@
         "strictBindCallApply": true,
         "strictPropertyInitialization": true,
         "alwaysStrict": true,
-        "outDir": "src/JavaScript"
+        "outDir": "build"
     },
     "include": [
-        "src/TypeScript/**/*"
-    ],
-    "exclude": [
-        "node_modules"
+        "src"
     ]
 }

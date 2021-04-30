@@ -1,4 +1,4 @@
-import "../../";
+import "../";
 
 Math.randomInt = (a: number, b?: number): number => {
     if (b === undefined) {
