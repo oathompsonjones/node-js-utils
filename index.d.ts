@@ -135,6 +135,16 @@ declare module "simple-node-utils" {
              * @param b The biggest value.
              */
             randomInt(b: number): number;
+            /**
+             * @param {...bigint[]} args any number of bigints.
+             * @return {bigint} The largest given bigint.
+             */
+            bigIntMax(...args: bigint[]): bigint;
+            /**
+             * @param {...bigint[]} args any number of bigints.
+             * @return {bigint} The smallest given bigint.
+             */
+            bigIntMin(...args: bigint[]): bigint;
         }
 
         export interface Number {
