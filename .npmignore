@@ -2,3 +2,4 @@ Tests/
 docs/
 .DS_Store
 src
+tsconfig.json
