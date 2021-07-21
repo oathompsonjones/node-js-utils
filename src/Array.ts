@@ -59,7 +59,7 @@ Array.prototype.split = function (maxLength: number): any[][] {
 
 Array.prototype.remove = function (value: any): any[] {
     return this.filter((val) => {
-        if (typeof value === "object" && Object.equal(val, value)) return false;
+        if (typeof value === "object" && Object.isEqual(val, value)) return false;
         else if (val === value) return false;
         return true;
     });
