@@ -75,3 +75,11 @@ Array.prototype.shuffle = function (): any[] {
     });
     return newArray;
 };
+
+Array.prototype.union = function (array: any[]): any[] {
+    return [...new Set(this).union(new Set(array))];
+};
+
+Array.prototype.intersection = function (array: any[]): any[] {
+    return [...new Set(this).intersection(new Set(array))];
+}

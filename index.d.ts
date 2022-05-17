@@ -53,6 +53,34 @@ declare module "simple-node-utils" {
              * @memberof Array
              */
             shuffle(): Array<T>;
+            /**
+             * @description Gets the intersection of two arrays.
+             * @param {Array<T>} array The second array.
+             * @return {*} {Array<T>} The intersection of the two arrays.
+             * @memberof Array
+             */
+            intersection(array: Array<T>): Array<T>;
+            /**
+             * @description Gets the intersection of two arrays.
+             * @param {Array<unknown>} array The second array.
+             * @return {*} {Array<T | unknown>} The intersection of the two arrays.
+             * @memberof Array
+             */
+            intersection(array: Array<unknown>): Array<T | unknown>;
+            /**
+             * @description Gets the union of two arrays.
+             * @param {Array<T>} array The second array.
+             * @return {*} {Array<T>} The union of the two arrays.
+             * @memberof Array
+             */
+            union(array: Array<T>): Array<T>;
+            /**
+             * @description Gets the union of two arrays.
+             * @param {Array<unknown>} array The second array.
+             * @return {*} {Array<T | unknown>} The union of the two arrays.
+             * @memberof Array
+             */
+            union(array: Array<unknown>): Array<T | unknown>;
         }
 
         export interface Date {
@@ -226,6 +254,37 @@ declare module "simple-node-utils" {
              * @memberof ObjectConstructor
              */
             isEqual(obj1: object, obj2: object): boolean;
+        }
+
+        export interface Set<T> {
+            /**
+             * @description Gets the intersection of two sets.
+             * @param {Set<T>} set The second set.
+             * @return {*} {Set<T>} The intersection of the two sets.
+             * @memberof Set
+             */
+            intersection(set: Set<T>): Set<T>;
+            /**
+             * @description Gets the intersection of two sets.
+             * @param {Set<unknown>} set The second set.
+             * @return {*} {Set<T | unknown>} The intersection of the two sets.
+             * @memberof Set
+             */
+            intersection(set: Set<unknown>): Set<T | unknown>;
+            /**
+             * @description Gets the union of two sets.
+             * @param {Set<T>} set The second set.
+             * @return {*} {Set<T>} The union of the two sets.
+             * @memberof Set
+             */
+            union(set: Set<T>): Set<T>;
+            /**
+             * @description Gets the union of two sets.
+             * @param {Set<unknown>} set The second set.
+             * @return {*} {Set<T | unknown>} The union of the two sets.
+             * @memberof Set
+             */
+            union(set: Set<unknown>): Set<T | unknown>;
         }
     }
     /**

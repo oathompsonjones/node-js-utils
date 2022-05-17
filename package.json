@@ -1,6 +1,6 @@
 {
     "name": "simple-node-utils",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "description": "A collection of useful functions for node.js.",
     "main": "index.js",
     "types": "index.d.ts",
