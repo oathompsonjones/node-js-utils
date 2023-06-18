@@ -1,26 +1,11 @@
 {
+    "extends": "@oathompsonjones/ts-config",
     "compilerOptions": {
-        "target": "esNext",
-        "module": "commonjs",
-        "removeComments": false,
-        "noImplicitReturns": true,
-        "noImplicitAny": true,
-        "noImplicitThis": true,
-        "noFallthroughCasesInSwitch": true,
-        "noUnusedParameters": true,
-        "forceConsistentCasingInFileNames": true,
-        "strict": true,
-        "noUnusedLocals": true,
-        "esModuleInterop": true,
-        "resolveJsonModule": true,
-        "strictNullChecks": true,
-        "strictFunctionTypes": true,
-        "strictBindCallApply": true,
-        "strictPropertyInitialization": true,
-        "alwaysStrict": true,
-        "outDir": "build"
+        "outDir": "build",
+        "rootDir": "src",
+        "declaration": true
     },
     "include": [
-        "src"
+        "src/**/*"
     ]
 }

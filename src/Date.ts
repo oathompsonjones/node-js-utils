@@ -1,36 +1,115 @@
-import "../";
+export enum DayOfTheWeek {
+    Monday = 1,
+    Tuesday = 2,
+    Wednesday = 3,
+    Thursday = 4,
+    Friday = 5,
+    Saturday = 6,
+    Sunday = 0
+}
 
-Date.prototype.getTimes = function (): { day: string; date: string; month: string; year: string; hours: string; minutes: string; seconds: string; milliseconds: string; } {
-    const minutes: string = (this.getUTCMinutes() <= 9 ? `0${this.getUTCMinutes()}` : this.getUTCMinutes()).toString();
-    const seconds: string = (this.getUTCSeconds() <= 9 ? `0${this.getUTCSeconds()}` : this.getUTCSeconds()).toString();
-    const milliseconds: string = (this.getUTCMilliseconds() <= 9 ? `00${this.getUTCMilliseconds()}` : this.getUTCMilliseconds() <= 99 ? `0${this.getMilliseconds()}` : this.getUTCMilliseconds()).toString();
-    const day: string = this.getUTCDay() === 0 ? "Sunday" : this.getUTCDay() === 1 ? "Monday" : this.getUTCDay() === 2 ? "Tuesday" : this.getUTCDay() === 3 ? "Wednesday" : this.getUTCDay() === 4 ? "Thursday" : this.getUTCDay() === 5 ? "Friday" : "Saturday";
-    const time = { day, date: this.getUTCDate().toString(), month: (this.getUTCMonth() + 1).toString(), year: this.getUTCFullYear().toString(), hours: this.getUTCHours().toString(), minutes, seconds, milliseconds };
-    return time;
-};
+export enum MonthOfTheYear {
+    January = 0,
+    February = 1,
+    March = 2,
+    April = 3,
+    May = 4,
+    June = 5,
+    July = 6,
+    August = 7,
+    September = 8,
+    October = 9,
+    November = 10,
+    December = 11
+}
 
-Date.prototype.toUptimeString = function (times: ("y" | "mo" | "w" | "d" | "h" | "m" | "s" | "ms" | "full" | "clean")[] = []): string {
-    const weeks: number = Math.floor((this.getUTCDate() - 1) / 7);
-    if (!times.length) {
-        if ((this.getUTCFullYear() - 1970) > 0) return `${this.getUTCFullYear() - 1970}y, ${this.getUTCMonth()}mo, ${weeks}w, ${(this.getUTCDate() - 1) % 7}d`;
-        if (this.getUTCMonth() > 0) return `${this.getUTCMonth()}mo, ${weeks}w, ${(this.getUTCDate() - 1) % 7}d, ${this.getUTCHours()}h`;
-        if (weeks > 0) return `${weeks}w, ${(this.getUTCDate() - 1) % 7}d, ${this.getUTCHours()}h`;
-        if (((this.getUTCDate() - 1) % 7) > 0) return `${this.getUTCDate() - 1}d, ${this.getUTCHours()}h, ${this.getUTCMinutes()}m`;
-        if (this.getUTCHours() > 0) return `${this.getUTCHours()}h, ${this.getUTCMinutes()}m, ${this.getUTCSeconds()}s`;
-        if (this.getUTCMinutes() > 0) return `${this.getUTCMinutes()}m, ${this.getUTCSeconds()}s, ${this.getUTCMilliseconds()}ms`;
-        if (this.getUTCSeconds() > 0) return `${this.getUTCSeconds()}s, ${this.getUTCMilliseconds()}ms`;
-        return `${this.getUTCMilliseconds()}ms`;
+export interface IDateTime {
+    day: keyof typeof DayOfTheWeek;
+    date: number;
+    month: keyof typeof MonthOfTheYear;
+    year: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+    milliseconds: number;
+}
+
+/**
+ * Creates an object which shows each property of the Date and Time.
+ *
+ * @param {Date} date The date.
+ * @returns An object expressing each property of the Date and Time.
+ */
+export function getTimes(date: Date): IDateTime {
+    return {
+        date: date.getUTCDate(),
+        day: DayOfTheWeek[date.getUTCDay()]! as keyof typeof DayOfTheWeek,
+        hours: date.getUTCHours(),
+        milliseconds: date.getUTCMilliseconds(),
+        minutes: date.getUTCMinutes(),
+        month: MonthOfTheYear[date.getUTCMonth()]! as keyof typeof MonthOfTheYear,
+        seconds: date.getUTCSeconds(),
+        year: date.getUTCFullYear()
+    };
+}
+
+/**
+ * Takes a date and calculates how much time has passed since.
+ *
+ * @param {(Date | EpochTimeStamp)} date The date as either a Date object or an EpochTimeStamp.
+ * @param {Array<"clean" | "d" | "full" | "h" | "m" | "mo" | "ms" | "s" | "w" | "y">} [formatOptions=[]] The format.
+ * @returns {string} A string representing how much time has passed.
+ */
+export function timeSince(
+    date: Date | EpochTimeStamp,
+    formatOptions: Array<"clean" | "d" | "full" | "h" | "m" | "mo" | "ms" | "s" | "w" | "y"> = []
+): string {
+    const timeElaspsed = new Date(Date.now() - date.valueOf());
+    const utcDate = timeElaspsed.getUTCDate() - 1,
+        utcHours = timeElaspsed.getUTCHours(),
+        utcMilliseconds = timeElaspsed.getUTCMilliseconds(),
+        utcMinutes = timeElaspsed.getUTCMinutes(),
+        utcMonth = timeElaspsed.getUTCMonth(),
+        utcSeconds = timeElaspsed.getUTCSeconds(),
+        utcWeeks: number = Math.floor(utcDate / 7),
+        utcYear = timeElaspsed.getUTCFullYear();
+    if (!formatOptions.length) {
+        if (utcYear - 1970 > 0)
+            return `${utcYear - 1970}y, ${utcMonth}mo, ${utcWeeks}w, ${utcDate % 7}d`;
+        if (utcMonth > 0)
+            return `${utcMonth}mo, ${utcWeeks}w, ${utcDate % 7}d, ${utcHours}h`;
+        if (utcWeeks > 0)
+            return `${utcWeeks}w, ${utcDate % 7}d, ${utcHours}h, ${utcMinutes}m`;
+        if (utcDate % 7 > 0)
+            return `${utcDate}d, ${utcHours}h, ${utcMinutes}m, ${utcSeconds}s`;
+        if (utcHours > 0)
+            return `${utcHours}h, ${utcMinutes}m, ${utcSeconds}s, ${utcMilliseconds}ms`;
+        if (utcMinutes > 0)
+            return `${utcMinutes}m, ${utcSeconds}s, ${utcMilliseconds}ms`;
+        if (utcSeconds > 0)
+            return `${utcSeconds}s, ${utcMilliseconds}ms`;
+        return `${utcMilliseconds}ms`;
     }
     const arr: string[] = [];
-    const clean: boolean = times.includes("clean");
-    if (times.includes("full")) times = ["y", "mo", "w", "d", "h", "m", "s", "ms"];
-    if (times.includes("y") && (clean ? (this.getUTCFullYear() - 1970) > 0 : true)) arr.push(`${this.getUTCFullYear() - 1970}y`);
-    if (times.includes("mo") && (clean ? this.getUTCMonth() > 0 : true)) arr.push(`${this.getUTCMonth()}mo`);
-    if (times.includes("w") && (clean ? weeks > 0 : true)) arr.push(`${weeks}w`);
-    if (times.includes("d") && (clean ? ((this.getUTCDate() - 1) % 7) > 0 : true)) arr.push(`${(this.getUTCDate() - 1) % 7}d`);
-    if (times.includes("h") && (clean ? this.getUTCHours() > 0 : true)) arr.push(`${this.getUTCHours()}h`);
-    if (times.includes("m") && (clean ? this.getUTCMinutes() > 0 : true)) arr.push(`${this.getUTCMinutes()}m`);
-    if (times.includes("s") && (clean ? this.getUTCSeconds() > 0 : true)) arr.push(`${this.getUTCSeconds()}s`);
-    if (times.includes("ms") && (clean ? this.getUTCMilliseconds() > 0 : true)) arr.push(`${this.getUTCMilliseconds()}ms`);
+    const clean: boolean = formatOptions.includes("clean");
+    let format = formatOptions;
+    if (formatOptions.length === 1 && clean || formatOptions.includes("full"))
+        format = ["y", "mo", "w", "d", "h", "m", "s", "ms"];
+    if (format.includes("y") && (clean ? utcYear - 1970 > 0 : true))
+        arr.push(`${utcYear - 1970}y`);
+    if (format.includes("mo") && (clean ? utcMonth > 0 : true))
+        arr.push(`${utcMonth}mo`);
+    if (format.includes("w") && (clean ? utcWeeks > 0 : true))
+        arr.push(`${utcWeeks}w`);
+    if (format.includes("d") && (clean ? utcDate % 7 > 0 : true))
+        arr.push(`${utcDate % 7}d`);
+    if (format.includes("h") && (clean ? utcHours > 0 : true))
+        arr.push(`${utcHours}h`);
+    if (format.includes("m") && (clean ? utcMinutes > 0 : true))
+        arr.push(`${utcMinutes}m`);
+    if (format.includes("s") && (clean ? utcSeconds > 0 : true))
+        arr.push(`${utcSeconds}s`);
+    if (format.includes("ms") && (clean ? utcMilliseconds > 0 : true))
+        arr.push(`${utcMilliseconds}ms`);
     return arr.join(", ");
-};
+}

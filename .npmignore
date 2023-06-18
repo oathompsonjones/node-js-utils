@@ -1,5 +1,7 @@
-Tests/
-docs/
 .DS_Store
+node_modules
 src
+jest.config.js
 tsconfig.json
+pnpm-lock.yaml
+docs
