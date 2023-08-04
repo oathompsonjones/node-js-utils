@@ -1,4 +1,4 @@
-import { toReadableString } from "../number";
+import { toReadableString } from "../number.js";
 
 describe("toReadableString", () => {
     it("should return the same string for numbers less than 1000", () => {

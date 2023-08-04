@@ -12,7 +12,7 @@ import {
     toSentenceCase,
     toSnakeCase,
     toTitleCase
-} from "../string";
+} from "../string.js";
 
 describe("escapeRegExp", () => {
     it("should escape all special characters", () => {

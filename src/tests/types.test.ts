@@ -1,4 +1,4 @@
-import type { Enumerate, FixedLengthArray, IntRange } from "../types";
+import type { Enumerate, FixedLengthArray, IntRange } from "../types.js";
 
 describe("Enumerate", () => {
     it("should work", () => {

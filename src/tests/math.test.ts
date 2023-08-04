@@ -1,4 +1,4 @@
-import { bigIntMax, bigIntMin, mapRange, randomInt } from "../math";
+import { bigIntMax, bigIntMin, mapRange, randomInt } from "../math.js";
 
 describe("bigIntMax", () => {
     it("should return the largest of the given bigints", () => {

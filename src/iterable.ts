@@ -1,5 +1,5 @@
-import type { EqualityFunction } from ".";
-import { isEqual } from "./object";
+import type { EqualityFunction } from "./index.js";
+import { isEqual } from "./object.js";
 
 /**
  * A contains function for any interable type.

@@ -1,4 +1,4 @@
-import { isEqual } from "../object";
+import { isEqual } from "../object.js";
 
 describe("isEqual", () => {
     const func = (): string => "test";

@@ -1,4 +1,5 @@
-import { memoise, parseTime } from "../other";
+import { memoise, parseTime } from "../other.js";
+
 describe("memoise", () => {
     const fibonacci1 = (n: number): number => (n < 2 ? n : fibonacci1(n - 1) + fibonacci1(n - 2));
     const fibonacci2 = memoise((n: number): number => (n < 2 ? n : fibonacci2(n - 1) + fibonacci2(n - 2)));

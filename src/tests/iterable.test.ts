@@ -12,7 +12,7 @@ import {
     splitIterable,
     toListString,
     union
-} from "../iterable";
+} from "../iterable.js";
 
 describe("contains", () => {
     it("should work correctly for arrays", () => {

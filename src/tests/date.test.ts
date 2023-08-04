@@ -1,4 +1,4 @@
-import { getTimes, timeSince } from "../date";
+import { getTimes, timeSince } from "../date.js";
 
 describe("getTimes", () => {
     it("should return an object with the correct properties", () => {
