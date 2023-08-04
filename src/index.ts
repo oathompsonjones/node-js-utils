@@ -1,15 +1,8 @@
 export * from "./date";
-export * as DateFunctions from "./date";
 export * from "./math";
-export * as MathFunctions from "./math";
 export * from "./number";
-export * as NumberFunctions from "./number";
 export * from "./object";
-export * as ObjectFunctions from "./object";
 export * from "./iterable";
-export * as IterableFunctions from "./iterable";
 export * from "./string";
-export * as StringFunctions from "./string";
 export * from "./other";
-export * as Types from "./types";
 export * from "./types";
