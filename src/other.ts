@@ -39,7 +39,7 @@ export function parseTime(str: string): number | null {
         time.match(regExp.millisecond) !== null))
         return null;
 
-    let ms: number = 0;
+    let ms = 0;
     times.forEach((time) => {
         if (time.match(regExp.millisecond) !== null)
             ms += values.millisecond * parseInt(time.match(regExp.millisecond)?.[0] ?? "0", 10);
