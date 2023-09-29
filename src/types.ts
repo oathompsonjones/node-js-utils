@@ -68,6 +68,27 @@ export type Enumerate<N extends number> = EnumerateHelper<N>;
  * A function to determine if 2 values are equal.
  *
  * @typedef {EqualityFunction}
- * @template Type The type of the two values.
+ * @template T The type of the two values.
  */
-export type EqualityFunction<Type> = (a: Type, b: Type) => boolean;
+export type EqualityFunction<T> = (a: T, b: T) => boolean;
+
+/**
+ * A version of the built in `Partial` type that applies to every level of an object.
+ *
+ * @typedef {DeepPartial}
+ * @template T The type to make partial.
+ */
+export type DeepPartial<T> = {
+    [K in keyof T]?: DeepPartial<T[K]>;
+};
+
+/**
+ * A utility type which makes othe combinations of types more readable.
+ *
+ * @typedef {Prettify}
+ * @template T The type to prettify.
+ */
+export type Prettify<T> = {
+    [K in keyof T]: T[K];
+// eslint-disable-next-line @typescript-eslint/ban-types
+} & {};

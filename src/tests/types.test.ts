@@ -1,4 +1,4 @@
-import type { Enumerate, FixedLengthArray, IntRange } from "../types.js";
+import type { DeepPartial, Enumerate, FixedLengthArray, IntRange, Prettify } from "../types.js";
 
 describe("Enumerate", () => {
     it("should work", () => {
@@ -57,5 +57,50 @@ describe("IntRange", () => {
         // @ts-expect-error 5 is not in the range [0, 5)
         testIntRange = 5;
         expect(testIntRange).toBe(testIntRange);
+    });
+});
+
+describe("DeepPartial", () => {
+    it("should work", () => {
+        type NestedObject = {
+            a: {
+                b: {
+                    c: number;
+                };
+            };
+        };
+        // @ts-expect-error a is required
+        let obj1: NestedObject = {};
+        // @ts-expect-error b is required
+        obj1 = { a: {} };
+        // @ts-expect-error c is required
+        obj1 = { a: { b: {} } };
+        // @ts-expect-no-error a is optional
+        let obj2: DeepPartial<NestedObject> = {};
+        // @ts-expect-no-error b is optional
+        obj2 = { a: {} };
+        // @ts-expect-no-error c is optional
+        obj2 = { a: { b: {} } };
+        expect(obj1).toEqual(obj2);
+    });
+});
+
+describe("Prettify", () => {
+    it ("should work", () => {
+        type Ugly = {
+            a: string;
+        } & {
+            b: number;
+        } & {
+            c: boolean;
+        };
+        type Pretty = Prettify<Ugly>;
+        let testPretty: Pretty = {
+            a: "",
+            b: 0,
+            c: false,
+        };
+        let testUgly: Ugly = testPretty;
+        expect(testPretty).toEqual(testUgly);
     });
 });

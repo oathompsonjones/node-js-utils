@@ -17,7 +17,8 @@ describe("getTimes", () => {
 
 describe("timeSince", () => {
     it("should return the correct string to represent 1 second", () => {
-        expect(timeSince(Date.now() - 1000)).toBe("1s, 0ms");
+        // There is a small chance that this test return "1s, 1ms" instead of "1s, 0ms".
+        expect(timeSince(Date.now() - 1000)).toMatch(/1s, (0|1)ms/u);
     });
     it("should return the correct string to represent 1 minute", () => {
         expect(timeSince(new Date(Date.now() - 60_000))).toBe("1m, 0s, 0ms");
