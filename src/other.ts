@@ -63,15 +63,30 @@ export function parseTime(str: string): number | null {
 
 /**
  * A memoisation function to wrap around other functions.
+ * This should wrap the function definition, not the function call.
+ *
+ * @example
+ * // This is how you should use this function:
+ * const fibonacci = memoise((n: number): number => (n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2)));
+ * fibonacci(40);
+ * // This is NOT how you should use this function:
+ * const fibonacci = (n: number): number => (n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2));
+ * memoise(fibonacci)(40);
  *
  * @template ArgsType The argument types of the function to be wrapped.
  * @template ReturnType The return type of the function to be wrapped.
  * @param {(...args: ArgsType[]) => ReturnType} func The function to be wrapped.
- * @param {Record<string, unknown>} [cache={}] The cache object, this should be ommitted in most cases.
- * @returns {(...args: ArgsType[]) => ReturnType} The same output as the wrapped function.
+ * @param {(...args: ArgsType[]) => string} [serialise=(...args: ArgsType[]): string => JSON.stringify(args)]
+ * A function to serialise the arguments to a string.
+ * @returns {(...args: ArgsType[]) => ReturnType} A memoised version of the function.
  */
-export function memoise<ArgsType, ReturnType>(
-    func: (...args: ArgsType[]) => ReturnType, cache: Record<string, unknown> = {}
-): (...args: ArgsType[]) => ReturnType {
-    return (...args: ArgsType[]): ReturnType => (cache[JSON.stringify(args)] ??= func(...args)) as ReturnType;
+export function memoise<Args extends unknown[], Return>(
+    fn: (...args: Args) => Return,
+    serialise: (...args: Args) => string = (...args: Args): string => JSON.stringify(args)
+): typeof fn {
+    const cache = new Map<string, Return>();
+    return (...args: Args): Return => {
+        const key = serialise(...args);
+        return cache.get(key) ?? cache.set(key, fn(...args)).get(key)!;
+    };
 }
