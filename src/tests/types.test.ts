@@ -62,13 +62,13 @@ describe("IntRange", () => {
 
 describe("DeepPartial", () => {
     it("should work", () => {
-        type NestedObject = {
+        interface NestedObject {
             a: {
                 b: {
                     c: number;
                 };
             };
-        };
+        }
         // @ts-expect-error a is required
         let obj1: NestedObject = {};
         // @ts-expect-error b is required
@@ -86,7 +86,7 @@ describe("DeepPartial", () => {
 });
 
 describe("Prettify", () => {
-    it ("should work", () => {
+    it("should work", () => {
         type Ugly = {
             a: string;
         } & {
@@ -95,12 +95,12 @@ describe("Prettify", () => {
             c: boolean;
         };
         type Pretty = Prettify<Ugly>;
-        let testPretty: Pretty = {
+        const testPretty: Pretty = {
             a: "",
             b: 0,
-            c: false,
+            c: false
         };
-        let testUgly: Ugly = testPretty;
+        const testUgly: Ugly = testPretty;
         expect(testPretty).toEqual(testUgly);
     });
 });
