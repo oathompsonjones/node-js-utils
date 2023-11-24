@@ -1,4 +1,4 @@
-export enum DayOfTheWeek {
+export enum Days {
     Monday = 1,
     Tuesday = 2,
     Wednesday = 3,
@@ -8,7 +8,7 @@ export enum DayOfTheWeek {
     Sunday = 0
 }
 
-export enum MonthOfTheYear {
+export enum Months {
     January = 0,
     February = 1,
     March = 2,
@@ -23,10 +23,10 @@ export enum MonthOfTheYear {
     December = 11
 }
 
-export interface IDateTime {
-    day: keyof typeof DayOfTheWeek;
+export interface DateTime {
+    day: keyof typeof Days;
     date: number;
-    month: keyof typeof MonthOfTheYear;
+    month: keyof typeof Months;
     year: number;
     hours: number;
     minutes: number;
@@ -40,14 +40,14 @@ export interface IDateTime {
  * @param {Date} date The date.
  * @returns An object expressing each property of the Date and Time.
  */
-export function getTimes(date: Date): IDateTime {
+export function getTimes(date: Date): DateTime {
     return {
         date: date.getUTCDate(),
-        day: DayOfTheWeek[date.getUTCDay()]! as keyof typeof DayOfTheWeek,
+        day: Days[date.getUTCDay()]! as keyof typeof Days,
         hours: date.getUTCHours(),
         milliseconds: date.getUTCMilliseconds(),
         minutes: date.getUTCMinutes(),
-        month: MonthOfTheYear[date.getUTCMonth()]! as keyof typeof MonthOfTheYear,
+        month: Months[date.getUTCMonth()]! as keyof typeof Months,
         seconds: date.getUTCSeconds(),
         year: date.getUTCFullYear()
     };
