@@ -13,18 +13,18 @@
         "build": "pnpm tsc --project tsconfig.build.json"
     },
     "author": "oathompsonjones",
-    "license": "ISC",
+    "license": "MIT",
     "repository": {
         "url": "https://github.com/oathompsonjones/simple-node-utils.git"
     },
     "devDependencies": {
-        "@oathompsonjones/eslint-config": "0.0.65",
-        "@oathompsonjones/ts-config": "0.0.25",
-        "@types/jest": "^29.5.5",
-        "@types/node": "^20.8.6",
-        "eslint": "^8.51.0",
+        "@oathompsonjones/eslint-config": "0.0.71",
+        "@oathompsonjones/ts-config": "0.0.27",
+        "@types/jest": "^29.5.10",
+        "@types/node": "^20.10.0",
+        "eslint": "^8.54.0",
         "jest": "^29.7.0",
         "ts-jest": "^29.1.1",
-        "typescript": "^5.2.2"
+        "typescript": "^5.3.2"
     }
 }
