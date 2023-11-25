@@ -1,7 +1,8 @@
 import type { DeepPartial, Enumerate, FixedLengthArray, IntRange, Prettify } from "../types.js";
+import { describe, expect, test } from "vitest";
 
 describe("Enumerate", () => {
-    it("should work", () => {
+    test("should work", () => {
         // @ts-expect-error -1 is not in the range [0, 5)
         let testEnumerate: Enumerate<5> = -1;
         // @ts-expect-no-error 0 is in the range [0, 5)
@@ -21,7 +22,7 @@ describe("Enumerate", () => {
 });
 
 describe("FixedLengthArray", () => {
-    it("should work", () => {
+    test("should work", () => {
         // @ts-expect-error 0 is not in the range (0, 5]
         let testFixedLengthArray: FixedLengthArray<5, number> = [];
         // @ts-expect-error 1 is not in the range (0, 5]
@@ -41,7 +42,7 @@ describe("FixedLengthArray", () => {
 });
 
 describe("IntRange", () => {
-    it("should work", () => {
+    test("should work", () => {
         // @ts-expect-error -1 is not in the range [0, 5)
         let testIntRange: IntRange<0, 5> = -1;
         // @ts-expect-no-error 0 is in the range [0, 5)
@@ -61,7 +62,7 @@ describe("IntRange", () => {
 });
 
 describe("DeepPartial", () => {
-    it("should work", () => {
+    test("should work", () => {
         interface NestedObject {
             a: {
                 b: {
@@ -86,7 +87,7 @@ describe("DeepPartial", () => {
 });
 
 describe("Prettify", () => {
-    it("should work", () => {
+    test("should work", () => {
         type Ugly = {
             a: string;
         } & {
