@@ -3,8 +3,8 @@
  *
  * @example 9999999 => 9 999 999
  * @example 1234567890.0987654 => 1 234 567 890.0987654
- * @param {number} num The number to format.
- * @returns {string} A readable string.
+ * @param num The number to format.
+ * @returns A readable string.
  */
 export function toReadableString(num: number): string {
     const integerPart = num.toString().split(".")[0]!

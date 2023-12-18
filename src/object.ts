@@ -15,10 +15,9 @@
  * For all other values, the keys are checked using the same system, and if
  * they're equal, each value is recursively checked too.
  *
- * @template Type The type for the values to compare.
- * @param {Type} a The first value.
- * @param {Type} b The second value.
- * @returns {boolean} Whether or not the two objects are equal.
+ * @param a The first value.
+ * @param b The second value.
+ * @returns Whether or not the two objects are equal.
  */
 export function isEqual<Type>(a: Type, b: Type): boolean {
     const aType = a === null ? "null" : typeof a;

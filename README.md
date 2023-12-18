@@ -50,7 +50,7 @@ interface IDateTime {
 /**
  * Creates an object which shows each property of the Date and Time.
  *
- * @param {Date} date The date.
+ * @param date The date.
  * @returns An object expressing each property of the Date and Time.
  */
 function getTimes(date: Date): IDateTime;
@@ -60,9 +60,9 @@ function getTimes(date: Date): IDateTime;
 /**
  * Takes a date and calculates how much time has passed since.
  *
- * @param {(Date | EpochTimeStamp)} date The date as either a Date object or an EpochTimeStamp.
- * @param {Array<"clean" | "d" | "full" | "h" | "m" | "mo" | "ms" | "s" | "w" | "y">} [formatOptions=[]] The format.
- * @returns {string} A string representing how much time has passed.
+ * @param date The date as either a Date object or an EpochTimeStamp.
+ * @param formatOptions The format.
+ * @returns A string representing how much time has passed.
  */
 function timeSince(
     date: Date | EpochTimeStamp,
@@ -79,12 +79,10 @@ function timeSince(
  * Checks if a given iterable contains a given value.
  * For Maps, it checks if the key exists.
  *
- * @template Type The type of value in the iterable.
- * @param {Iterable<Type>} iterable The iterable to check the value for.
- * @param {Type} value The value to check for.
- * @param {EqualityFunction<Type>} [areEqual=isEqual] A function to determine if two values are equal.
- * Defaults to the equality function provided by this package.
- * @returns {boolean} Whether or not the iterable contains the value.
+ * @param iterable The iterable to check the value for.
+ * @param value The value to check for.
+ * @param areEqual A function to determine if two values are equal. Defaults to the equality function provided by this package.
+ * @returns Whether or not the iterable contains the value.
  */
 function contains<Type>(
     iterable: Iterable<Type>, value: Type,
@@ -96,11 +94,9 @@ function contains<Type>(
 /**
  * Creates a new iterable which doesn't contain any duplicate values.
  *
- * @template Type The type of the values in the iterable.
- * @param {Iterable<Type>} iterable The iterable to remove duplicates from.
- * @param {EqualityFunction<Type>} [areEqual=isEqual] A function to determine if two values are equal.
- * Defaults to the equality function provided by this package.
- * @returns {Array<Type>} An array containing the values of the original iterable, but without any duplicates.
+ * @param iterable The iterable to remove duplicates from.
+ * @param areEqual A function to determine if two values are equal. Defaults to the equality function provided by this package.
+ * @returns An array containing the values of the original iterable, but without any duplicates.
  */
 function removeDuplicates<Type>(iterable: Iterable<Type>, areEqual: EqualityFunction<Type> = isEqual): Type[];
 ```
@@ -109,13 +105,10 @@ function removeDuplicates<Type>(iterable: Iterable<Type>, areEqual: EqualityFunc
 /**
  * Gets the union of two iterables. A ∪ B
  *
- * @template TypeA The type of value in the first iterable.
- * @template TypeB The type of value in the second iterable.
- * @param {Iterable<TypeA>} A The first iterable.
- * @param {Iterable<TypeB>} B The second iterable.
- * @param {EqualityFunction<TypeA | TypeB>} [areEqual=isEqual] A function to determine if two values are equal.
- * Defaults to the equality function provided by this package.
- * @returns {Array<TypeB | TypeA>} The union of the two iterables.
+ * @param A The first iterable.
+ * @param B The second iterable.
+ * @param areEqual A function to determine if two values are equal. Defaults to the equality function provided by this package.
+ * @returns The union of the two iterables.
  */
 function union<TypeA, TypeB>(
     A: Iterable<TypeA>,
@@ -128,13 +121,10 @@ function union<TypeA, TypeB>(
 /**
  * Gets the intersection of two iterables. A ∩ B
  *
- * @template TypeA The type of value in the first iterable.
- * @template TypeB The type of value in the second iterable.
- * @param {Iterable<TypeA>} A The first iterable.
- * @param {Iterable<TypeB>} B The second iterable.
- * @param {EqualityFunction<TypeA | TypeB>} [areEqual=isEqual] A function to determine if two values are equal.
- * Defaults to the equality function provided by this package.
- * @returns {Array<TypeA | TypeB>} The intersection of the two iterables.
+ * @param A The first iterable.
+ * @param B The second iterable.
+ * @param areEqual A function to determine if two values are equal. Defaults to the equality function provided by this package.
+ * @returns The intersection of the two iterables.
  */
 function intersection<TypeA, TypeB>(
     A: Iterable<TypeA>,
@@ -147,13 +137,10 @@ function intersection<TypeA, TypeB>(
 /**
  * Gets the difference of two iterables. A \ B
  *
- * @template TypeA The type of value in the first iterable.
- * @template TypeB The type of value in the second iterable.
- * @param {Iterable<TypeA>} A The first iterable.
- * @param {Iterable<TypeB>} B The second iterable.
- * @param {EqualityFunction<TypeA | TypeB>} [areEqual=isEqual] A function to determine if two values are equal.
- * Defaults to the equality function provided by this package.
- * @returns {Array<TypeA | TypeB>} The difference of the two iterables.
+ * @param A The first iterable.
+ * @param B The second iterable.
+ * @param areEqual A function to determine if two values are equal. Defaults to the equality function provided by this package.
+ * @returns The difference of the two iterables.
  */
 function difference<TypeA, TypeB>(
     A: Iterable<TypeA>,
@@ -166,11 +153,9 @@ function difference<TypeA, TypeB>(
 /**
  * Equivalent to using `Array#join(", ")`, but the last command is replaced by `"and"`, and `"."` is added to the end.
  *
- * @template Type The type of value in the iterable.
- * @param {Iterable<Type>} iterable The iterable to create a list from.
- * @param {(value: Type) => string} [toString=(value: Type): string => String(value)] A function to turn the value into a string.
- * Defaults to `String(value)`.
- * @returns {string} The list.
+ * @param iterable The iterable to create a list from.
+ * @param toString A function to turn the value into a string. Defaults to `String(value)`.
+ * @returns The list.
  */
 function toListString<Type>(
     iterable: Iterable<Type>,
@@ -182,12 +167,10 @@ function toListString<Type>(
 /**
  * Counts how many times a given value appears in the given iterable.
  *
- * @template Type The type of value in the iterable.
- * @param {Iterable<Type>} iterable The iterable.
- * @param {Type} value The value to count.
- * @param {EqualityFunction<Type>} [areEqual=isEqual] A function to determine if two values are equal.
- * Defaults to the equality function provided by this package.
- * @returns {number} The number of times the element appears in the iterable.
+ * @param iterable The iterable.
+ * @param value The value to count.
+ * @param areEqual A function to determine if two values are equal. Defaults to the equality function provided by this package.
+ * @returns The number of times the element appears in the iterable.
  */
 function countElement<Type>(iterable: Iterable<Type>, value: Type, areEqual: EqualityFunction<Type> = isEqual): number;
 ```
@@ -196,13 +179,11 @@ function countElement<Type>(iterable: Iterable<Type>, value: Type, areEqual: Equ
 /**
  * Creates a new array which contains only the values which appear the given number of times.
  *
- * @template Type The type of the iterable.
- * @param {Iterable<Type>} iterable The iterable to filter.
- * @param {number} occurrences The number of times an element needs to appear.
- * @param {boolean} [includeExcessOccurances=false] Whether or not to include items which appear more than the given number of times.
- * @param {EqualityFunction<Type>} [areEqual=isEqual] A function to determine if two values are equal.
- * Defaults to the equality function provided by this package.
- * @returns {Type[]} An array contianing only the elements which apppear enough times in the original array.
+ * @param iterable The iterable to filter.
+ * @param occurrences The number of times an element needs to appear.
+ * @param includeExcessOccurances Whether or not to include items which appear more than the given number of times.
+ * @param areEqual A function to determine if two values are equal. Defaults to the equality function provided by this package.
+ * @returns An array contianing only the elements which apppear enough times in the original array.
  */
 function filterByCount<Type>(
     iterable: Iterable<Type>,
@@ -216,11 +197,9 @@ function filterByCount<Type>(
 /**
  * Finds the most common element(s) in the iterable.
  *
- * @template Type The type of the values in the iterable.
- * @param {Iterable<Type>} iterable The iterable to filter.
- * @param {EqualityFunction<Type>} [areEqual=isEqual] A function to determine if two values are equal.
- * Defaults to the equality function provided by this package.
- * @returns {Type[]} An array of the most common element(s) in the iterable.
+ * @param iterable The iterable to filter.
+ * @param areEqual A function to determine if two values are equal. Defaults to the equality function provided by this package.
+ * @returns An array of the most common element(s) in the iterable.
  */
 function getModes<Type>(iterable: Iterable<Type>, areEqual: EqualityFunction<Type> = isEqual): Type[];
 ```
@@ -229,10 +208,9 @@ function getModes<Type>(iterable: Iterable<Type>, areEqual: EqualityFunction<Typ
 /**
  * Creates a new array, containing the original array, split into smaller arrays.
  *
- * @template Type The type of the array.
- * @param {Type[]} iterable The array to split.
- * @param {number} maxLength The maximum length of each subarray.
- * @returns {Type[][]} The new array.
+ * @param iterable The array to split.
+ * @param maxLength The maximum length of each subarray.
+ * @returns The new array.
  */
 function splitIterable<Type>(iterable: Iterable<Type>, maxLength: number): Type[][];
 ```
@@ -241,12 +219,10 @@ function splitIterable<Type>(iterable: Iterable<Type>, maxLength: number): Type[
 /**
  * Create a new array, removing any occurances of the given value.
  *
- * @template Type The type of the iterable.
- * @param {Iterable<Type>} iterable The array to remove the value from.
- * @param {Type} value The value to remove.
- * @param {EqualityFunction<Type>} [areEqual=isEqual] A function to determine if two values are equal.
- * Defaults to the equality function provided by this package.
- * @returns {Type[]} The new array.
+ * @param iterable The array to remove the value from.
+ * @param value The value to remove.
+ * @param areEqual A function to determine if two values are equal. Defaults to the equality function provided by this package.
+ * @returns The new array.
  */
 function removeValue<Type>(iterable: Iterable<Type>, value: Type, areEqual: EqualityFunction<Type> = isEqual): Type[];
 ```
@@ -255,9 +231,8 @@ function removeValue<Type>(iterable: Iterable<Type>, value: Type, areEqual: Equa
 /**
  * Creates a new array, containing the elements of the original array, in a random order.
  *
- * @template Type The type of the iterable.
- * @param {Iterable<Type>} iterable The iterable to shuffle
- * @returns {Type[]} The new array.
+ * @param iterable The iterable to shuffle
+ * @returns The new array.
  */
 function shuffle<Type>(iterable: Iterable<Type>): Type[];
 ```
@@ -266,12 +241,10 @@ function shuffle<Type>(iterable: Iterable<Type>): Type[];
 /**
  * Just like `Array#indexOf(value)`, but this checks if any two values are equal rather than just their reference.
  *
- * @template Type
- * @param {Iterable<Type>} iterable The iterable to find the value in.
- * @param {Type} value The value to find the index of.
- * @param {EqualityFunction<Type>} [areEqual=isEqual] A function to determine if two values are equal.
- * Defaults to the equality function provided by this package.
- * @returns {number} The index of the value if it was found, -1 otherwise.
+ * @param iterable The iterable to find the value in.
+ * @param value The value to find the index of.
+ * @param areEqual A function to determine if two values are equal. Defaults to the equality function provided by this package.
+ * @returns The index of the value if it was found, -1 otherwise.
  */
 function indexOfValue<Type>(iterable: Iterable<Type>, value: Type, areEqual: EqualityFunction<Type> = isEqual): number;
 ```
@@ -285,12 +258,12 @@ function indexOfValue<Type>(iterable: Iterable<Type>, value: Type, areEqual: Equ
  * Takes an input, a range for that input, and a range for the output.
  * The output sits in the output range, proportionally to how the input sat in the input range.
  *
- * @param {number} x The input number.
- * @param {number} inMin The minimum possible value for the input.
- * @param {number} inMax The maximum possible value for the input.
- * @param {number} outMin The minimum possible value for the output.
- * @param {number} outMax The maximum possible value for the output.
- * @returns {number} A number adjusted for the new range.
+ * @param x The input number.
+ * @param inMin The minimum possible value for the input.
+ * @param inMax The maximum possible value for the input.
+ * @param outMin The minimum possible value for the output.
+ * @param outMax The maximum possible value for the output.
+ * @returns A number adjusted for the new range.
  */
 function mapRange(x: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
 ```
@@ -299,17 +272,17 @@ function mapRange(x: number, inMin: number, inMax: number, outMin: number, outMa
 /**
  * Returns a random integer in the range [0, b).
  *
- * @param {number} maxValue The maximum possible value.
- * @return {number} Returns a random integer between 0 and b.
+ * @param maxValue The maximum possible value.
+ * @return Returns a random integer between 0 and b.
  */
 function randomInt(maxValue: number): number;
 
 /**
  * Returns a random integer in the range [a, b).
  *
- * @param {number} minValue The minimum possible value.
- * @param {number} maxValue The maximum possible value.
- * @return {number} Returns a random integer between a and b.
+ * @param minValue The minimum possible value.
+ * @param maxValue The maximum possible value.
+ * @return Returns a random integer between a and b.
  */
 function randomInt(minValue: number, maxValue: number): number;
 ```
@@ -318,8 +291,8 @@ function randomInt(minValue: number, maxValue: number): number;
 /**
  * A Math.max method for the BigInt type.
  *
- * @param {...bigint[]} args Numeric expressions to be evaluated.
- * @returns {bigint} Returns the larger of a set of supplied numeric expressions.
+ * @param args Numeric expressions to be evaluated.
+ * @returns Returns the larger of a set of supplied numeric expressions.
  */
 function bigIntMax(...args: bigint[]): bigint;
 ```
@@ -328,8 +301,8 @@ function bigIntMax(...args: bigint[]): bigint;
 /**
  * A Math.min method for the BigInt type.
  *
- * @param {...bigint[]} args Numeric expressions to be evaluated.
- * @returns {bigint} Returns the smaller of a set of supplied numeric expressions.
+ * @param args Numeric expressions to be evaluated.
+ * @returns Returns the smaller of a set of supplied numeric expressions.
  */
 function bigIntMin(...args: bigint[]): bigint;
 ```
@@ -344,8 +317,8 @@ function bigIntMin(...args: bigint[]): bigint;
  *
  * @example 9999999 => 9 999 999
  * @example 1234567890.0987654 => 1 234 567 890.0987654
- * @param {number} num The number to format.
- * @returns {string} A readable string.
+ * @param num The number to format.
+ * @returns A readable string.
  */
 export function toReadableString(num: number): string;
 ```
@@ -372,10 +345,9 @@ export function toReadableString(num: number): string;
  * For all other values, the keys are checked using the same system, and if
  * they're equal, each value is recursively checked too.
  *
- * @template Type The type for the values to compare.
- * @param {Type} a The first value.
- * @param {Type} b The second value.
- * @returns {boolean} Whether or not the two objects are equal.
+ * @param a The first value.
+ * @param b The second value.
+ * @returns Whether or not the two objects are equal.
  */
 export function isEqual<Type>(a: Type, b: Type): boolean;
 ```
@@ -389,8 +361,8 @@ export function isEqual<Type>(a: Type, b: Type): boolean;
  * Converts the string to kebab case.
  *
  * @example kebab case => kebab-case
- * @param {string} str The string to convert.
- * @returns {string} The string in kebab case.
+ * @param str The string to convert.
+ * @returns The string in kebab case.
  */
 function toSentenceCase(str: string): string;
 ```
@@ -400,8 +372,8 @@ function toSentenceCase(str: string): string;
  * Converts the string to title case.
  *
  * @example title case => Title Case
- * @param {string} str The string to convert.
- * @returns {string} The string in title case.
+ * @param str The string to convert.
+ * @returns The string in title case.
  */
 function toTitleCase(str: string): string;
 ```
@@ -411,8 +383,8 @@ function toTitleCase(str: string): string;
  * Converts the string to pascal case.
  *
  * @example pascal case => PascalCase
- * @param {string} str The string to convert.
- * @returns {string} The string in pascal case.
+ * @param str The string to convert.
+ * @returns The string in pascal case.
  */
 function toPascalCase(str: string): string;
 ```
@@ -422,8 +394,8 @@ function toPascalCase(str: string): string;
  * Converts the string to camel case.
  *
  * @example camel case => camelCase
- * @param {string} str The string to convert.
- * @returns {string} The string in camel case.
+ * @param str The string to convert.
+ * @returns The string in camel case.
  */
 function toCamelCase(str: string): string;
 ```
@@ -433,8 +405,8 @@ function toCamelCase(str: string): string;
  * Converts the string to kebab case.
  *
  * @example kebab case => kebab-case
- * @param {string} str The string to convert.
- * @returns {string} The string in kebab case.
+ * @param str The string to convert.
+ * @returns The string in kebab case.
  */
 function toKebabCase(str: string): string;
 ```
@@ -444,8 +416,8 @@ function toKebabCase(str: string): string;
  * Converts the string to snake case.
  *
  * @example snake case => snake_case
- * @param {string} str The string to convert.
- * @returns {string} The string in snake case.
+ * @param str The string to convert.
+ * @returns The string in snake case.
  */
 function toSnakeCase(str: string): string;
 ```
@@ -455,8 +427,8 @@ function toSnakeCase(str: string): string;
  * Converts the string to screaming kebab case.
  *
  * @example screaming kebab case => SCREAMING-KEBAB-CASE
- * @param {string} str The string to convert.
- * @returns {string} The string in screaming kebab case.
+ * @param str The string to convert.
+ * @returns The string in screaming kebab case.
  */
 function toScreamingKebabCase(str: string): string;
 ```
@@ -466,8 +438,8 @@ function toScreamingKebabCase(str: string): string;
  * Converts the string to screaming snake case.
  *
  * @example screaming snake case => SCREAMING_SNAKE_CASE
- * @param {string} str The string to convert.
- * @returns {string} The string in screaming snake case.
+ * @param str The string to convert.
+ * @returns The string in screaming snake case.
  */
 function toScreamingSnakeCase(str: string): string;
 ```
@@ -476,10 +448,10 @@ function toScreamingSnakeCase(str: string): string;
 /**
  * Replaces the last instance of the given substring with a new substring.
  *
- * @param {string} str The string to modify.
- * @param {string} substr The substring to replace the last instance of.
- * @param {string} replacement The substring replacement.
- * @returns {string} The new string.
+ * @param str The string to modify.
+ * @param substr The substring to replace the last instance of.
+ * @param replacement The substring replacement.
+ * @returns The new string.
  */
 function replaceLastIndexOf(str: string, substr: string, replacement: string): string;
 ```
@@ -488,9 +460,9 @@ function replaceLastIndexOf(str: string, substr: string, replacement: string): s
 /**
  * Removes the last instance of the given substring from the given string.
  *
- * @param {string} str The string to modify.
- * @param {string} substr The substring to remove the last instance of.
- * @returns {string} The new string.
+ * @param str The string to modify.
+ * @param substr The substring to remove the last instance of.
+ * @returns The new string.
  */
 function removeLastIndexOf(str: string, substr: string): string;
 ```
@@ -499,8 +471,8 @@ function removeLastIndexOf(str: string, substr: string): string;
 /**
  * Escapes any special regular expression characters.
  *
- * @param {string} str The string to escape.
- * @returns {string} The escaped string.
+ * @param str The string to escape.
+ * @returns The escaped string.
  */
 function escapeRegExp(str: string): string;
 ```
@@ -509,8 +481,8 @@ function escapeRegExp(str: string): string;
 /**
  * Reverses the string.
  *
- * @param {string} str The string to reverse.
- * @returns {string} The reversed string.
+ * @param str The string to reverse.
+ * @returns The reversed string.
  */
 function reverseString(str: string): string;
 ```
@@ -519,8 +491,8 @@ function reverseString(str: string): string;
 /**
  * Returns a random string of the given length.
  *
- * @param {number} length The length of the string.
- * @returns {string} The random string.
+ * @param length The length of the string.
+ * @returns The random string.
  */
 function randomString(length: number): string;
 ```
@@ -532,10 +504,6 @@ function randomString(length: number): string;
 ```ts
 /**
  * A fixed length array type.
- *
- * @typedef {FixedLengthArray}
- * @template Length The length of the array.
- * @template Type The type of the values stored in the array.
  */
 export type FixedLengthArray<
     Length extends number,
@@ -545,18 +513,11 @@ export type FixedLengthArray<
 
 /**
  * The keys of an array which can alter its length.
- *
- * @typedef {ArrayLengthMutationKeys}
  */
 type ArrayLengthMutationKeys = number | "pop" | "push" | "shift" | "splice" | "unshift";
 
 /**
  * Recursively generates a tuple of the given length with the given type.
- *
- * @typedef {FixedLengthArrayItems}
- * @template Length The length of the tuple.
- * @template Type The type of each value in the tuple.
- * @template Accumulator The starting value of the tuple for the recursion.
  */
 type FixedLengthArrayItems<
     Length extends number,
@@ -572,19 +533,11 @@ type FixedLengthArrayItems<
 ```ts
 /**
  * A range of numbers from Start to End. [Start, End)
- *
- * @typedef {IntRange}
- * @template Start The lowest number.
- * @template End The highest number plus one.
  */
 export type IntRange<Start extends number, End extends number> = Exclude<Enumerate<End>, Enumerate<Start>>;
 
 /**
  * A helper type for Enumerate.
- *
- * @typedef {Enumerate}
- * @template N The highest number plus one.
- * @template Acc An accumlator to generate the range.
  */
 type EnumerateHelper<N extends number, Acc extends number[] = []> = Acc["length"] extends N
     ? Acc[number]
@@ -592,9 +545,6 @@ type EnumerateHelper<N extends number, Acc extends number[] = []> = Acc["length"
 
 /**
  * A range of numbers from 0 to N. [0, N)
- *
- * @typedef {Enumerate}
- * @template N The highest number plus one.
  */
 export type Enumerate<N extends number> = EnumerateHelper<N>;
 ```
@@ -602,9 +552,6 @@ export type Enumerate<N extends number> = EnumerateHelper<N>;
 ```ts
 /**
  * A function to determine if 2 values are equal.
- *
- * @typedef {EqualityFunction}
- * @template Type The type of the two values.
  */
 export type EqualityFunction<Type> = (a: Type, b: Type) => boolean;
 ```
@@ -617,8 +564,8 @@ export type EqualityFunction<Type> = (a: Type, b: Type) => boolean;
  *
  * @example `"5m"` => 5 minutes => `300000`
  * @example `"1h,5m"` => 1 hour and 5 minutes => `3900000`
- * @param {string} str The string representation of an amount of time.
- * @returns {(number | null)} The number of milliseconds, or null if the input is invalid.
+ * @param str The string representation of an amount of time.
+ * @returns The number of milliseconds, or null if the input is invalid.
  */
 function parseTime(str: string): number | null;
 ```
@@ -626,12 +573,19 @@ function parseTime(str: string): number | null;
 ```ts
 /**
  * A memoisation function to wrap around other functions.
+ * This should wrap the function definition, not the function call.
  *
- * @template ArgsType The argument types of the function to be wrapped.
- * @template ReturnType The return type of the function to be wrapped.
- * @param {(...args: ArgsType[]) => ReturnType} func The function to be wrapped.
- * @param {Record<string, unknown>} [cache={}] The cache object, this should be ommitted in most cases.
- * @returns {(...args: ArgsType[]) => ReturnType} The same output as the wrapped function.
+ * @example
+ * // This is how you should use this function:
+ * const fibonacci = memoise((n: number): number => (n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2)));
+ * fibonacci(40);
+ * // This is NOT how you should use this function:
+ * const fibonacci = (n: number): number => (n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2));
+ * memoise(fibonacci)(40);
+ *
+ * @param fn The function to be wrapped.
+ * @param serialise A function to serialise the arguments to a string.
+ * @returns A memoised version of the function.
  */
 function memoise<ArgsType, ReturnType>(
     func: (...args: ArgsType[]) => ReturnType, cache: Record<string, unknown> = {}

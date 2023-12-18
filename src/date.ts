@@ -37,7 +37,7 @@ export interface DateTime {
 /**
  * Creates an object which shows each property of the Date and Time.
  *
- * @param {Date} date The date.
+ * @param date The date.
  * @returns An object expressing each property of the Date and Time.
  */
 export function getTimes(date: Date): DateTime {
@@ -56,9 +56,9 @@ export function getTimes(date: Date): DateTime {
 /**
  * Takes a date and calculates how much time has passed since.
  *
- * @param {(Date | EpochTimeStamp)} date The date as either a Date object or an EpochTimeStamp.
- * @param {Array<"clean" | "d" | "full" | "h" | "m" | "mo" | "ms" | "s" | "w" | "y">} [formatOptions=[]] The format.
- * @returns {string} A string representing how much time has passed.
+ * @param date The date as either a Date object or an EpochTimeStamp.
+ * @param formatOptions The format.
+ * @returns A string representing how much time has passed.
  */
 export function timeSince(
     date: Date | EpochTimeStamp,

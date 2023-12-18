@@ -3,8 +3,8 @@
  *
  * @example `"5m"` => 5 minutes => `300000`
  * @example `"1h,5m"` => 1 hour and 5 minutes => `3900000`
- * @param {string} str The string representation of an amount of time.
- * @returns {(number | null)} The number of milliseconds, or null if the input is invalid.
+ * @param str The string representation of an amount of time.
+ * @returns The number of milliseconds, or null if the input is invalid.
  */
 export function parseTime(str: string): number | null {
     const regExp: { [time in "day" | "hour" | "millisecond" | "minute" | "month" | "second" | "week" | "year"]: RegExp } = {
@@ -73,12 +73,9 @@ export function parseTime(str: string): number | null {
  * const fibonacci = (n: number): number => (n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2));
  * memoise(fibonacci)(40);
  *
- * @template ArgsType The argument types of the function to be wrapped.
- * @template ReturnType The return type of the function to be wrapped.
- * @param {(...args: ArgsType[]) => ReturnType} func The function to be wrapped.
- * @param {(...args: ArgsType[]) => string} [serialise=(...args: ArgsType[]): string => JSON.stringify(args)]
- * A function to serialise the arguments to a string.
- * @returns {(...args: ArgsType[]) => ReturnType} A memoised version of the function.
+ * @param fn The function to be wrapped.
+ * @param serialise A function to serialise the arguments to a string.
+ * @returns A memoised version of the function.
  */
 export function memoise<Args extends unknown[], Return>(
     fn: (...args: Args) => Return,
