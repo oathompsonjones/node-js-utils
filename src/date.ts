@@ -1,11 +1,11 @@
 export enum Days {
+    Sunday = 0,
     Monday = 1,
     Tuesday = 2,
     Wednesday = 3,
     Thursday = 4,
     Friday = 5,
     Saturday = 6,
-    Sunday = 0
 }
 
 export enum Months {
@@ -20,10 +20,10 @@ export enum Months {
     September = 8,
     October = 9,
     November = 10,
-    December = 11
+    December = 11,
 }
 
-export interface DateTime {
+export type DateTime = {
     day: keyof typeof Days;
     date: number;
     month: keyof typeof Months;
@@ -32,7 +32,7 @@ export interface DateTime {
     minutes: number;
     seconds: number;
     milliseconds: number;
-}
+};
 
 /**
  * Creates an object which shows each property of the Date and Time.
@@ -49,7 +49,7 @@ export function getTimes(date: Date): DateTime {
         minutes: date.getUTCMinutes(),
         month: Months[date.getUTCMonth()]! as keyof typeof Months,
         seconds: date.getUTCSeconds(),
-        year: date.getUTCFullYear()
+        year: date.getUTCFullYear(),
     };
 }
 
@@ -62,54 +62,75 @@ export function getTimes(date: Date): DateTime {
  */
 export function timeSince(
     date: Date | EpochTimeStamp,
-    formatOptions: Array<"clean" | "d" | "full" | "h" | "m" | "mo" | "ms" | "s" | "w" | "y"> = []
+    formatOptions: Array<"clean" | "d" | "full" | "h" | "m" | "mo" | "ms" | "s" | "w" | "y"> = [],
 ): string {
     const timeElaspsed = new Date(Date.now() - date.valueOf());
-    const utcDate = timeElaspsed.getUTCDate() - 1,
-        utcHours = timeElaspsed.getUTCHours(),
-        utcMilliseconds = timeElaspsed.getUTCMilliseconds(),
-        utcMinutes = timeElaspsed.getUTCMinutes(),
-        utcMonth = timeElaspsed.getUTCMonth(),
-        utcSeconds = timeElaspsed.getUTCSeconds(),
-        utcWeeks: number = Math.floor(utcDate / 7),
-        utcYear = timeElaspsed.getUTCFullYear();
-    if (!formatOptions.length) {
-        if (utcYear - 1970 > 0)
-            return `${utcYear - 1970}y, ${utcMonth}mo, ${utcWeeks}w, ${utcDate % 7}d`;
-        if (utcMonth > 0)
-            return `${utcMonth}mo, ${utcWeeks}w, ${utcDate % 7}d, ${utcHours}h`;
-        if (utcWeeks > 0)
-            return `${utcWeeks}w, ${utcDate % 7}d, ${utcHours}h, ${utcMinutes}m`;
-        if (utcDate % 7 > 0)
-            return `${utcDate}d, ${utcHours}h, ${utcMinutes}m, ${utcSeconds}s`;
-        if (utcHours > 0)
-            return `${utcHours}h, ${utcMinutes}m, ${utcSeconds}s, ${utcMilliseconds}ms`;
-        if (utcMinutes > 0)
-            return `${utcMinutes}m, ${utcSeconds}s, ${utcMilliseconds}ms`;
-        if (utcSeconds > 0)
-            return `${utcSeconds}s, ${utcMilliseconds}ms`;
-        return `${utcMilliseconds}ms`;
+    const utc = {
+        date: timeElaspsed.getUTCDate() - 1,
+        hours: timeElaspsed.getUTCHours(),
+        milliseconds: timeElaspsed.getUTCMilliseconds(),
+        minutes: timeElaspsed.getUTCMinutes(),
+        month: timeElaspsed.getUTCMonth(),
+        seconds: timeElaspsed.getUTCSeconds(),
+        weeks: Math.floor((timeElaspsed.getUTCDate() - 1) / 7),
+        year: timeElaspsed.getUTCFullYear(),
+    };
+
+    if (formatOptions.length === 0) {
+        if (utc.year - 1970 > 0)
+            return `${utc.year - 1970}y, ${utc.month}mo, ${utc.weeks}w, ${utc.date % 7}d`;
+
+        if (utc.month > 0)
+            return `${utc.month}mo, ${utc.weeks}w, ${utc.date % 7}d, ${utc.hours}h`;
+
+        if (utc.weeks > 0)
+            return `${utc.weeks}w, ${utc.date % 7}d, ${utc.hours}h, ${utc.minutes}m`;
+
+        if (utc.date % 7 > 0)
+            return `${utc.date}d, ${utc.hours}h, ${utc.minutes}m, ${utc.seconds}s`;
+
+        if (utc.hours > 0)
+            return `${utc.hours}h, ${utc.minutes}m, ${utc.seconds}s, ${utc.milliseconds}ms`;
+
+        if (utc.minutes > 0)
+            return `${utc.minutes}m, ${utc.seconds}s, ${utc.milliseconds}ms`;
+
+        if (utc.seconds > 0)
+            return `${utc.seconds}s, ${utc.milliseconds}ms`;
+
+        return `${utc.milliseconds}ms`;
     }
+
     const arr: string[] = [];
     const clean: boolean = formatOptions.includes("clean");
     let format = formatOptions;
+
     if (formatOptions.length === 1 && clean || formatOptions.includes("full"))
         format = ["y", "mo", "w", "d", "h", "m", "s", "ms"];
-    if (format.includes("y") && (clean ? utcYear - 1970 > 0 : true))
-        arr.push(`${utcYear - 1970}y`);
-    if (format.includes("mo") && (clean ? utcMonth > 0 : true))
-        arr.push(`${utcMonth}mo`);
-    if (format.includes("w") && (clean ? utcWeeks > 0 : true))
-        arr.push(`${utcWeeks}w`);
-    if (format.includes("d") && (clean ? utcDate % 7 > 0 : true))
-        arr.push(`${utcDate % 7}d`);
-    if (format.includes("h") && (clean ? utcHours > 0 : true))
-        arr.push(`${utcHours}h`);
-    if (format.includes("m") && (clean ? utcMinutes > 0 : true))
-        arr.push(`${utcMinutes}m`);
-    if (format.includes("s") && (clean ? utcSeconds > 0 : true))
-        arr.push(`${utcSeconds}s`);
-    if (format.includes("ms") && (clean ? utcMilliseconds > 0 : true))
-        arr.push(`${utcMilliseconds}ms`);
+
+    if (format.includes("y") && (clean ? utc.year - 1970 > 0 : true))
+        arr.push(`${utc.year - 1970}y`);
+
+    if (format.includes("mo") && (clean ? utc.month > 0 : true))
+        arr.push(`${utc.month}mo`);
+
+    if (format.includes("w") && (clean ? utc.weeks > 0 : true))
+        arr.push(`${utc.weeks}w`);
+
+    if (format.includes("d") && (clean ? utc.date % 7 > 0 : true))
+        arr.push(`${utc.date % 7}d`);
+
+    if (format.includes("h") && (clean ? utc.hours > 0 : true))
+        arr.push(`${utc.hours}h`);
+
+    if (format.includes("m") && (clean ? utc.minutes > 0 : true))
+        arr.push(`${utc.minutes}m`);
+
+    if (format.includes("s") && (clean ? utc.seconds > 0 : true))
+        arr.push(`${utc.seconds}s`);
+
+    if (format.includes("ms") && (clean ? utc.milliseconds > 0 : true))
+        arr.push(`${utc.milliseconds}ms`);
+
     return arr.join(", ");
 }

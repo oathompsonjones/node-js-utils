@@ -4,7 +4,7 @@
 export type FixedLengthArray<
     Length extends number,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    Type = any
+    Type = any,
 > = Omit<FixedLengthArrayItems<Length, Type>, ArrayLengthMutationKeys>;
 
 /**
@@ -18,7 +18,7 @@ type ArrayLengthMutationKeys = number | "pop" | "push" | "shift" | "splice" | "u
 type FixedLengthArrayItems<
     Length extends number,
     Type,
-    Accumulator extends Type[] = []
+    Accumulator extends Type[] = [],
 > = Accumulator["length"] extends Length
     ? Accumulator & { readonly length: Length; }
     : Accumulator["length"] extends 999

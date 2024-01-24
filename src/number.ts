@@ -22,5 +22,6 @@ export function toReadableString(num: number): string {
             .join("")
             .trim()
         }`;
+
     return integerPart + decimalPart;
 }

@@ -11,7 +11,7 @@ import {
     shuffle,
     splitIterable,
     toListString,
-    union
+    union,
 } from "../iterable.js";
 import { describe, expect, test } from "vitest";
 
@@ -42,6 +42,7 @@ describe("contains", () => {
 
 describe("countElement", () => {
     const input = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5];
+
     test("should work correctly for arrays", () => {
         expect(countElement(input, 3)).toBe(3);
         expect(countElement(input, 0)).toBe(0);
@@ -87,6 +88,7 @@ describe("difference", () => {
 
 describe("filterByCount", () => {
     const input = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5];
+
     test("should work correctly for arrays", () => {
         expect(filterByCount(input, 0)).toStrictEqual([]);
         expect(filterByCount(input, 3)).toStrictEqual([3]);
@@ -210,6 +212,7 @@ describe("intersection", () => {
 
 describe("removeDuplicates", () => {
     const input = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5];
+
     test("should work correctly for arrays", () => {
         expect(removeDuplicates(input)).toStrictEqual([1, 2, 3, 4, 5]);
     });
@@ -255,6 +258,7 @@ describe("removeValue", () => {
 
 describe("shuffle", () => {
     const input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
     describe("should not give the same result as the input", () => {
         test("should work correctly for arrays", () => {
             expect(shuffle(input)).not.toStrictEqual(input);
@@ -319,6 +323,7 @@ describe("shuffle", () => {
 
 describe("splitIterable", () => {
     const input = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
     test("should work correctly for arrays", () => {
         expect(splitIterable(input, 3)).toStrictEqual([[0, 1, 2], [3, 4, 5], [6, 7, 8], [9, 10, 11], [12, 13, 14], [15]]);
     });
@@ -329,7 +334,7 @@ describe("splitIterable", () => {
             [[6, 6], [7, 7], [8, 8]],
             [[9, 9], [10, 10], [11, 11]],
             [[12, 12], [13, 13], [14, 14]],
-            [[15, 15]]
+            [[15, 15]],
         ]);
     });
     test("should work correctly for sets", () => {
@@ -344,7 +349,7 @@ describe("splitIterable", () => {
             ["1", "1", "1"],
             ["2", "1", "3"],
             ["1", "4", "1"],
-            ["5"]
+            ["5"],
         ]);
     });
     test("should work correctly for typed arrays", () => {

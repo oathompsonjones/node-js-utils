@@ -7,28 +7,19 @@
  * @returns The number of milliseconds, or null if the input is invalid.
  */
 export function parseTime(str: string): number | null {
-    const regExp: { [time in "day" | "hour" | "millisecond" | "minute" | "month" | "second" | "week" | "year"]: RegExp } = {
-        day: /(\d+)d(ay)?s?/igu,
-        hour: /(\d+)h((ou)?r)?s?/igu,
-        millisecond: /(\d+)m(illiseconds?|s)/igu,
-        minute: /(\d+)m(in(ute)?s?)?/igu,
-        month: /(\d+)mo(nth)?s?/igu,
-        second: /(\d+)s(ec(ond)?)?s?/igu,
-        week: /(\d+)w((ee)?k)?s?/igu,
-        year: /(\d+)y((ea)?r)?s?/igu
-    };
-    const values: { [time in "day" | "hour" | "millisecond" | "minute" | "month" | "second" | "week" | "year"]: number } = {
-        day: 24 * 60 * 60 * 1e3,
-        hour: 60 * 60 * 1e3,
-        millisecond: 1,
-        minute: 60 * 1e3,
-        month: 365.25 / 12 * 24 * 60 * 60 * 1e3,
-        second: 1e3,
-        week: 7 * 24 * 60 * 60 * 1e3,
-        year: 365.25 * 24 * 60 * 60 * 1e3
+    const regExp = {
+        day: /(?:\d+)d(?:ay)?s?/igu,
+        hour: /(?:\d+)h(?:(?:ou)?r)?s?/igu,
+        millisecond: /(?:\d+)m(?:illiseconds?|s)/igu,
+        minute: /(?:\d+)m(?:in(?:ute)?s?)?/igu,
+        month: /(?:\d+)mo(?:nth)?s?/igu,
+        second: /(?:\d+)s(?:ec(?:ond)?)?s?/igu,
+        week: /(?:\d+)w(?:(?:ee)?k)?s?/igu,
+        year: /(?:\d+)y(?:(?:ea)?r)?s?/igu,
     };
 
     const times: string[] = str.replace(/\s/gu, "").split(",");
+
     if (!times.some((time) => time.match(regExp.year) !== null ||
         time.match(regExp.month) !== null ||
         time.match(regExp.week) !== null ||
@@ -40,24 +31,26 @@ export function parseTime(str: string): number | null {
         return null;
 
     let ms = 0;
+
     times.forEach((time) => {
         if (time.match(regExp.millisecond) !== null)
-            ms += values.millisecond * parseInt(time.match(regExp.millisecond)?.[0] ?? "0", 10);
+            ms += parseInt(time.match(regExp.millisecond)?.[0] ?? "0", 10);
         else if (time.match(regExp.month) !== null)
-            ms += values.month * parseInt(time.match(regExp.month)?.[0] ?? "0", 10);
+            ms += 365.25 / 12 * 24 * 60 * 60 * 1000 * parseInt(time.match(regExp.month)?.[0] ?? "0", 10);
         else if (time.match(regExp.minute) !== null)
-            ms += values.minute * parseInt(time.match(regExp.minute)?.[0] ?? "0", 10);
+            ms += 60 * 1000 * parseInt(time.match(regExp.minute)?.[0] ?? "0", 10);
         else if (time.match(regExp.second) !== null)
-            ms += values.second * parseInt(time.match(regExp.second)?.[0] ?? "0", 10);
+            ms += 1000 * parseInt(time.match(regExp.second)?.[0] ?? "0", 10);
         else if (time.match(regExp.hour) !== null)
-            ms += values.hour * parseInt(time.match(regExp.hour)?.[0] ?? "0", 10);
+            ms += 60 * 60 * 1000 * parseInt(time.match(regExp.hour)?.[0] ?? "0", 10);
         else if (time.match(regExp.day) !== null)
-            ms += values.day * parseInt(time.match(regExp.day)?.[0] ?? "0", 10);
+            ms += 24 * 60 * 60 * 1000 * parseInt(time.match(regExp.day)?.[0] ?? "0", 10);
         else if (time.match(regExp.week) !== null)
-            ms += values.week * parseInt(time.match(regExp.week)?.[0] ?? "0", 10);
+            ms += 7 * 24 * 60 * 60 * 1000 * parseInt(time.match(regExp.week)?.[0] ?? "0", 10);
         else if (time.match(regExp.year) !== null)
-            ms += values.year * parseInt(time.match(regExp.year)?.[0] ?? "0", 10);
+            ms += 365.25 * 24 * 60 * 60 * 1000 * parseInt(time.match(regExp.year)?.[0] ?? "0", 10);
     });
+
     return ms;
 }
 
@@ -79,11 +72,13 @@ export function parseTime(str: string): number | null {
  */
 export function memoise<Args extends unknown[], Return>(
     fn: (...args: Args) => Return,
-    serialise: (...args: Args) => string = (...args: Args): string => JSON.stringify(args)
+    serialise: (...args: Args) => string = (...args: Args): string => JSON.stringify(args),
 ): typeof fn {
     const cache = new Map<string, Return>();
+
     return (...args: Args): Return => {
         const key = serialise(...args);
+
         return cache.get(key) ?? cache.set(key, fn(...args)).get(key)!;
     };
 }

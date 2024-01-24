@@ -3,6 +3,7 @@ import { isEqual } from "../object.js";
 
 describe("isEqual", () => {
     const func = (): string => "test";
+
     test("should return true when comparing the same function reference", () => {
         expect(isEqual(func, func)).toBe(true);
     });

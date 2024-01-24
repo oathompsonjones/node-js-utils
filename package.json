@@ -1,6 +1,6 @@
 {
     "name": "simple-node-utils",
-    "version": "2.2.1",
+    "version": "2.2.2",
     "description": "A collection of useful functions for node.js.",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",
@@ -18,11 +18,10 @@
         "url": "https://github.com/oathompsonjones/simple-node-utils.git"
     },
     "devDependencies": {
-        "@oathompsonjones/eslint-config": "0.0.72",
-        "@oathompsonjones/ts-config": "0.0.27",
-        "@types/node": "^20.10.0",
-        "eslint": "^8.54.0",
-        "typescript": "^5.3.2",
-        "vitest": "^0.34.6"
+        "@oathompsonjones/eslint-config": "1.0.6",
+        "@oathompsonjones/ts-config": "0.0.31",
+        "@types/node": "^20.11.6",
+        "typescript": "^5.3.3",
+        "vitest": "^1.2.1"
     }
 }

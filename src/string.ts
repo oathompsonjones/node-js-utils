@@ -109,8 +109,10 @@ export function toScreamingSnakeCase(str: string): string {
 export function replaceLastIndexOf(str: string, substr: string, replacement: string): string {
     const index: number = str.lastIndexOf(substr);
     const copy = [...str];
+
     if (index >= 0)
         copy.splice(index, substr.length, replacement);
+
     return copy.join("");
 }
 
@@ -155,11 +157,13 @@ export function reverseString(str: string): string {
  */
 export function randomString(length: number): string {
     let str = "";
+
     for (let i = 0; i < length; i++) {
         str += Math.floor(Math.random() * 2) % 2
             ? Math.floor(Math.random() * 36).toString(36)
                 .toUpperCase()
             : Math.floor(Math.random() * 36).toString(36);
     }
+
     return str;
 }

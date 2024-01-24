@@ -12,7 +12,7 @@ import {
     toScreamingSnakeCase,
     toSentenceCase,
     toSnakeCase,
-    toTitleCase
+    toTitleCase,
 } from "../string.js";
 
 describe("escapeRegExp", () => {

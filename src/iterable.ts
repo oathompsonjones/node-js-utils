@@ -14,10 +14,12 @@ import { isEqual } from "./object.js";
 export function contains<Type>(iterable: Iterable<Type>, value: Type, areEqual: EqualityFunction<Type> = isEqual): boolean {
     if (areEqual === isEqual && (typeof value !== "object" || value === null))
         return [...iterable].includes(value);
+
     for (const val of iterable) {
         if (areEqual(val, value))
             return true;
     }
+
     return false;
 }
 
@@ -30,10 +32,12 @@ export function contains<Type>(iterable: Iterable<Type>, value: Type, areEqual: 
  */
 export function removeDuplicates<Type>(iterable: Iterable<Type>, areEqual: EqualityFunction<Type> = isEqual): Type[] {
     const array: Type[] = [];
+
     for (const value of iterable) {
         if (!contains(array, value, areEqual))
             array.push(value);
     }
+
     return array;
 }
 
@@ -48,17 +52,21 @@ export function removeDuplicates<Type>(iterable: Iterable<Type>, areEqual: Equal
 export function union<TypeA, TypeB>(
     A: Iterable<TypeA>,
     B: Iterable<TypeB>,
-    areEqual: EqualityFunction<TypeA | TypeB> = isEqual
+    areEqual: EqualityFunction<TypeA | TypeB> = isEqual,
 ): Array<TypeA | TypeB> {
     const ATypes = [...A].map((val) => (val === null ? "null" : typeof val));
     const BTypes = [...B].map((val) => (val === null ? "null" : typeof val));
+
     if (areEqual === isEqual && !ATypes.includes("object") && !BTypes.includes("object"))
         return [...new Set([...A, ...B])];
+
     const set = new Set<TypeA | TypeB>([...A]);
+
     for (const value of B) {
         if (!contains<TypeA | TypeB>(A, value, areEqual))
             set.add(value);
     }
+
     return [...set];
 }
 
@@ -73,7 +81,7 @@ export function union<TypeA, TypeB>(
 export function intersection<TypeA, TypeB>(
     A: Iterable<TypeA>,
     B: Iterable<TypeB>,
-    areEqual: EqualityFunction<TypeA | TypeB> = isEqual
+    areEqual: EqualityFunction<TypeA | TypeB> = isEqual,
 ): Array<TypeA | TypeB> {
     return [...new Set([...A].filter((element) => contains<TypeA | TypeB>(B, element, areEqual)))];
 }
@@ -89,7 +97,7 @@ export function intersection<TypeA, TypeB>(
 export function difference<TypeA, TypeB>(
     A: Iterable<TypeA>,
     B: Iterable<TypeB>,
-    areEqual: EqualityFunction<TypeA | TypeB> = isEqual
+    areEqual: EqualityFunction<TypeA | TypeB> = isEqual,
 ): Array<TypeA | TypeB> {
     return [...new Set([...A].filter((element) => !contains<TypeA | TypeB>(B, element, areEqual)))];
 }
@@ -103,9 +111,10 @@ export function difference<TypeA, TypeB>(
  */
 export function toListString<Type>(
     iterable: Iterable<Type>,
-    toString: (value: Type) => string = (value: Type): string => String(value)
+    toString: (value: Type) => string = (value: Type): string => String(value),
 ): string {
     const arr = [...iterable];
+
     return `${arr.slice(1).reduce((a, b, i) => (i < arr.length - 2
         ? `${a}, ${toString(b)}`
         : `${a} and ${toString(b)}`
@@ -137,10 +146,11 @@ export function filterByCount<Type>(
     iterable: Iterable<Type>,
     occurrences: number,
     includeExcessOccurances: boolean = false,
-    areEqual: EqualityFunction<Type> = isEqual
+    areEqual: EqualityFunction<Type> = isEqual,
 ): Iterable<Type> {
     const noDuplicates = removeDuplicates(iterable, areEqual);
     const counts: number[] = noDuplicates.map((value) => countElement(iterable, value, areEqual));
+
     return noDuplicates.filter((_, i) => (includeExcessOccurances ? counts[i]! >= occurrences : counts[i] === occurrences));
 }
 
@@ -155,6 +165,7 @@ export function getModes<Type>(iterable: Iterable<Type>, areEqual: EqualityFunct
     const noDuplicates = removeDuplicates(iterable, areEqual);
     const counts: number[] = noDuplicates.map((value) => countElement(iterable, value, areEqual));
     const maxCount = Math.max(...counts);
+
     return noDuplicates.filter((_, i) => counts[i] === maxCount);
 }
 
@@ -168,8 +179,10 @@ export function getModes<Type>(iterable: Iterable<Type>, areEqual: EqualityFunct
 export function splitIterable<Type>(iterable: Iterable<Type>, maxLength: number): Type[][] {
     const arrCopy = [...iterable];
     const output: Type[][] = [];
+
     while (arrCopy.length)
         output.push(arrCopy.splice(0, maxLength));
+
     return output;
 }
 
@@ -195,11 +208,14 @@ export function shuffle<Type>(iterable: Iterable<Type>): Type[] {
     const arr = [...iterable];
     let unusedIndicies: number[] = [...arr.keys()];
     const newArray: Type[] = Array(arr.length) as Type[];
+
     arr.forEach((value) => {
         const index: number = unusedIndicies[Math.floor(Math.random() * unusedIndicies.length)]!;
+
         newArray[index] = value;
         unusedIndicies = unusedIndicies.filter((x) => x !== index);
     });
+
     return newArray;
 }
 
@@ -213,9 +229,11 @@ export function shuffle<Type>(iterable: Iterable<Type>): Type[] {
  */
 export function indexOfValue<Type>(iterable: Iterable<Type>, value: Type, areEqual: EqualityFunction<Type> = isEqual): number {
     const arr = [...iterable];
+
     for (let i = 0; i < arr.length; i++) {
         if (areEqual(value, arr[i]!))
             return i;
     }
+
     return -1;
 }

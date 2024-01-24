@@ -11,7 +11,7 @@ describe("getTimes", () => {
             minutes: 30,
             month: "January",
             seconds: 5,
-            year: 2003
+            year: 2003,
         });
     });
 });
@@ -19,7 +19,7 @@ describe("getTimes", () => {
 describe("timeSince", () => {
     test("should return the correct string to represent 1 second", () => {
         // There is a small chance that this test return "1s, 1ms" instead of "1s, 0ms".
-        expect(timeSince(Date.now() - 1000)).toMatch(/1s, (0|1)ms/u);
+        expect(timeSince(Date.now() - 1000)).toMatch(/1s, (?:0|1)ms/u);
     });
     test("should return the correct string to represent 1 minute", () => {
         expect(timeSince(new Date(Date.now() - 60_000))).toBe("1m, 0s, 0ms");

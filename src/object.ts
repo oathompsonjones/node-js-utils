@@ -26,9 +26,11 @@ export function isEqual<Type>(a: Type, b: Type): boolean {
     // Check that they are the same type and not a function.
     if (aType !== bType)
         return false;
+
     // Use strict equality (===) if they are primitive, null, or a function.
     if (["undefined", "boolean", "number", "bigint", "string", "function", "null"].includes(aType))
         return a === b;
+
     // Handle symbols.
     if (aType === "symbol")
         return (a as symbol).toString() === (b as symbol).toString();
@@ -41,13 +43,17 @@ export function isEqual<Type>(a: Type, b: Type): boolean {
         .sort((x, y) => (x > y ? -1 : 1));
     const obj2Keys: string[] = Object.keys(obj2)
         .sort((x, y) => (x > y ? -1 : 1));
+
     // Check that the keys are the same.
+
     if (obj1Keys.length !== obj2Keys.length || JSON.stringify(obj1Keys) !== JSON.stringify(obj2Keys))
         return false;
+
     // Check that the value associated with each key is the same.
     for (const key of obj1Keys) {
         const obj1Val = obj1[key];
         const obj2Val = obj2[key];
+
         if (!isEqual(obj1Val, obj2Val))
             return false;
     }

@@ -25,9 +25,16 @@ export function randomInt(maxValue: number): number;
  *
  * @param minValue The minimum possible value.
  * @param maxValue The maximum possible value.
- * @return Returns a random integer between a and b.
+ * @returns Returns a random integer between a and b.
  */
 export function randomInt(minValue: number, maxValue: number): number;
+/**
+ * Returns a random integer in the range [a, b).
+ *
+ * @param minValue The minimum possible value.
+ * @param maxValue The maximum possible value.
+ * @returns Returns a random integer between a and b.
+ */
 export function randomInt(minValue: number, maxValue?: number): number {
     return maxValue === undefined
         ? Math.floor(Math.random() * minValue)

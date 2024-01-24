@@ -6,6 +6,7 @@ describe("Enumerate", () => {
         // @ts-expect-error -1 is not in the range [0, 5)
         let testEnumerate: Enumerate<5> = -1;
         // @ts-expect-no-error 0 is in the range [0, 5)
+
         testEnumerate = 0;
         // @ts-expect-no-error 1 is in the range [0, 5)
         testEnumerate = 1;
@@ -26,6 +27,7 @@ describe("FixedLengthArray", () => {
         // @ts-expect-error 0 is not in the range (0, 5]
         let testFixedLengthArray: FixedLengthArray<5, number> = [];
         // @ts-expect-error 1 is not in the range (0, 5]
+
         testFixedLengthArray = [0];
         // @ts-expect-error 2 is not in the range (0, 5]
         testFixedLengthArray = [0, 1];
@@ -46,6 +48,7 @@ describe("IntRange", () => {
         // @ts-expect-error -1 is not in the range [0, 5)
         let testIntRange: IntRange<0, 5> = -1;
         // @ts-expect-no-error 0 is in the range [0, 5)
+
         testIntRange = 0;
         // @ts-expect-no-error 1 is in the range [0, 5)
         testIntRange = 1;
@@ -63,22 +66,24 @@ describe("IntRange", () => {
 
 describe("DeepPartial", () => {
     test("should work", () => {
-        interface NestedObject {
+        type NestedObject = {
             a: {
                 b: {
                     c: number;
                 };
             };
-        }
+        };
         // @ts-expect-error a is required
         let obj1: NestedObject = {};
         // @ts-expect-error b is required
+
         obj1 = { a: {} };
         // @ts-expect-error c is required
         obj1 = { a: { b: {} } };
         // @ts-expect-no-error a is optional
         let obj2: DeepPartial<NestedObject> = {};
         // @ts-expect-no-error b is optional
+
         obj2 = { a: {} };
         // @ts-expect-no-error c is optional
         obj2 = { a: { b: {} } };
@@ -95,13 +100,15 @@ describe("Prettify", () => {
         } & {
             c: boolean;
         };
+
         type Pretty = Prettify<Ugly>;
         const testPretty: Pretty = {
             a: "",
             b: 0,
-            c: false
+            c: false,
         };
         const testUgly: Ugly = testPretty;
+
         expect(testPretty).toEqual(testUgly);
     });
 });
