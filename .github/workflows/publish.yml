@@ -14,7 +14,7 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-        node: [14.x, 18.x, 20.x]
+        node: [14.x]
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
@@ -25,5 +25,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build code
+        run: pnpm build
       - name: Publish code
         run: pnpm publish
