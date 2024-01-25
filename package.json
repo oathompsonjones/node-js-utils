@@ -18,7 +18,7 @@
         "url": "https://github.com/oathompsonjones/simple-node-utils.git"
     },
     "devDependencies": {
-        "@oathompsonjones/eslint-config": "1.0.6",
+        "@oathompsonjones/eslint-config": "1.0.7",
         "@oathompsonjones/ts-config": "0.0.31",
         "@types/node": "^20.11.6",
         "typescript": "^5.3.3",
