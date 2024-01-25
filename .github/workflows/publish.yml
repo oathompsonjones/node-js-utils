@@ -1,15 +1,14 @@
-name: Lint
+name: publish
 
 on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+  workflow_run:
+    workflows: ["lint-and-test"]
+    branches: [main, master]
+    types: 
+      - completed
 
 jobs:
-  lint:
+  publish:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -25,8 +24,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install
-      - name: Lint
-        run: pnpm lint
+          cache: "pnpm"
+      - name: Publish code
+        run: pnpm publish
