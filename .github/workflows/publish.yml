@@ -31,3 +31,5 @@ jobs:
         run: pnpm build
       - name: Publish code
         run: pnpm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_REGISTRY_KEY }}
