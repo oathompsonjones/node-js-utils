@@ -43,4 +43,13 @@ describe("isEqual", () => {
         expect(isEqual({ key1: { subKey1: 0 }, key2: "value2" }, { key1: { subKey1: 0 }, key2: { subKey2: 0 } })).toBe(false);
         expect(isEqual({ key1: { subKey1: 0 }, key2: "value2" }, { key1: { subKey1: 1 }, key2: "value2" })).toBe(false);
     });
+    test("should return false when comparing objects where one has an undefined value and the has no key", () => {
+        expect(isEqual({ key1: undefined }, {})).toBe(false);
+        expect(isEqual({}, { key1: undefined })).toBe(false);
+    });
+    test("should return true when comparing objects where one has an undefined value and the other has no key, " +
+        "and ignoreUndefined is true", () => {
+        expect(isEqual({ key1: undefined }, {}, true)).toBe(true);
+        expect(isEqual({}, { key1: undefined }, true)).toBe(true);
+    });
 });

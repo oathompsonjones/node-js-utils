@@ -15,11 +15,12 @@
  * For all other values, the keys are checked using the same system, and if
  * they're equal, each value is recursively checked too.
  *
- * @param a The first value.
- * @param b The second value.
+ * @param a - The first value.
+ * @param b - The second value.
+ * @param ignoreUndefined - Whether or not to treat `undefined` values as equal to non-existent keys.
  * @returns Whether or not the two objects are equal.
  */
-export function isEqual<Type>(a: Type, b: Type): boolean {
+export function isEqual<Type>(a: Type, b: Type, ignoreUndefined: boolean = false): boolean {
     const aType = a === null ? "null" : typeof a;
     const bType = b === null ? "null" : typeof b;
 
@@ -38,14 +39,14 @@ export function isEqual<Type>(a: Type, b: Type): boolean {
     // Handle objects.
     const obj1 = a as Record<string, unknown>;
     const obj2 = b as Record<string, unknown>;
+
     // Get the keys of each object.
-    const obj1Keys: string[] = Object.keys(obj1)
+    const obj1Keys: string[] = Object.keys(obj1).filter((key) => (ignoreUndefined ? obj1[key] !== undefined : true))
         .sort((x, y) => (x > y ? -1 : 1));
-    const obj2Keys: string[] = Object.keys(obj2)
+    const obj2Keys: string[] = Object.keys(obj2).filter((key) => (ignoreUndefined ? obj2[key] !== undefined : true))
         .sort((x, y) => (x > y ? -1 : 1));
 
     // Check that the keys are the same.
-
     if (obj1Keys.length !== obj2Keys.length || JSON.stringify(obj1Keys) !== JSON.stringify(obj2Keys))
         return false;
 

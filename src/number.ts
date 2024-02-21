@@ -1,9 +1,11 @@
 /**
  * Converts a number to a string, and formats it so that it is easier to read.
- *
- * @example 9999999 => 9 999 999
- * @example 1234567890.0987654 => 1 234 567 890.0987654
- * @param num The number to format.
+ * @example
+ * ```ts
+ * toReadableString(9999999); // "9 999 999"
+ * toReadableString(1234567890.0987654); // "1 234 567 890.0987654"
+ * ```
+ * @param num - The number to format.
  * @returns A readable string.
  */
 export function toReadableString(num: number): string {
