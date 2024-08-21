@@ -14,7 +14,7 @@
  *
  * For all other values, the keys are checked using the same system, and if
  * they're equal, each value is recursively checked too.
- *
+ * @template Type - The type of the values being compared.
  * @param a - The first value.
  * @param b - The second value.
  * @param ignoreUndefined - Whether or not to treat `undefined` values as equal to non-existent keys.

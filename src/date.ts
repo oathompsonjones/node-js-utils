@@ -36,7 +36,7 @@ export type DateTime = {
 
 /**
  * Creates an object which shows each property of the Date and Time.
- * @param date - The date.
+ * @param date - The date object.
  * @returns An object expressing each property of the Date and Time.
  */
 export function getTimes(date: Date): DateTime {
@@ -55,7 +55,7 @@ export function getTimes(date: Date): DateTime {
 /**
  * Takes a date and calculates how much time has passed since.
  * @param date - The date as either a Date object or an EpochTimeStamp.
- * @param formatOptions - The format.
+ * @param formatOptions - Which time units to include in the output.
  * @returns A string representing how much time has passed.
  */
 export function timeSince(

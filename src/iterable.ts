@@ -5,9 +5,10 @@ import { isEqual } from "./object.js";
  * A contains function for any interable type.
  * Checks if a given iterable contains a given value.
  * For Maps, it checks if the key exists.
- * @param iterable -  The iterable to check the value for.
- * @param value -  The value to check for.
- * @param areEqual -  A function to determine if two values are equal. Defaults to the equality function provided by this package.
+ * @template Type - The type of the elements in the iterable.
+ * @param iterable - The iterable to check the value for.
+ * @param value - The value to check for.
+ * @param areEqual - A function to determine if two values are equal. Defaults to the equality function provided by this package.
  * @returns Whether or not the iterable contains the value.
  */
 export function contains<Type>(iterable: Iterable<Type>, value: Type, areEqual: EqualityFunction<Type> = isEqual): boolean {
@@ -24,6 +25,7 @@ export function contains<Type>(iterable: Iterable<Type>, value: Type, areEqual: 
 
 /**
  * Creates a new iterable which doesn't contain any duplicate values.
+ * @template Type - The type of the elements in the iterable.
  * @param iterable - The iterable to remove duplicates from.
  * @param areEqual - A function to determine if two values are equal. Defaults to the equality function provided by this package.
  * @returns An array containing the values of the original iterable, but without any duplicates.
@@ -40,7 +42,9 @@ export function removeDuplicates<Type>(iterable: Iterable<Type>, areEqual: Equal
 }
 
 /**
- * Gets the union of two iterables. A ∪ B
+ * Gets the union of two iterables. A ∪ B.
+ * @template TypeA - The type of the elements in the first iterable.
+ * @template TypeB - The type of the elements in the second iterable.
  * @param A - The first iterable.
  * @param B - The second iterable.
  * @param areEqual - A function to determine if two values are equal. Defaults to the equality function provided by this package.
@@ -68,7 +72,9 @@ export function union<TypeA, TypeB>(
 }
 
 /**
- * Gets the intersection of two iterables. A ∩ B
+ * Gets the intersection of two iterables. A ∩ B.
+ * @template TypeA - The type of the elements in the first iterable.
+ * @template TypeB - The type of the elements in the second iterable.
  * @param A - The first iterable.
  * @param B - The second iterable.
  * @param areEqual - A function to determine if two values are equal. Defaults to the equality function provided by this package.
@@ -83,7 +89,9 @@ export function intersection<TypeA, TypeB>(
 }
 
 /**
- * Gets the difference of two iterables. A \\ B
+ * Gets the difference of two iterables. A \\ B.
+ * @template TypeA - The type of the elements in the first iterable.
+ * @template TypeB - The type of the elements in the second iterable.
  * @param A - The first iterable.
  * @param B - The second iterable.
  * @param areEqual - A function to determine if two values are equal. Defaults to the equality function provided by this package.
@@ -99,9 +107,10 @@ export function difference<TypeA, TypeB>(
 
 /**
  * Equivalent to using `Array#join(", ")`, but the last command is replaced by `"and"`, and `"."` is added to the end.
+ * @template Type - The type of the elements in the iterable.
  * @param iterable - The iterable to create a list from.
  * @param toString - A function to turn the value into a string. Defaults to `String(value)`.
- * @returns The list.
+ * @returns The list as a string.
  */
 export function toListString<Type>(
     iterable: Iterable<Type>,
@@ -117,7 +126,8 @@ export function toListString<Type>(
 
 /**
  * Counts how many times a given value appears in the given iterable.
- * @param iterable - The iterable.
+ * @template Type - The type of the elements in the iterable.
+ * @param iterable - The iterable to count the value in.
  * @param value - The value to count.
  * @param areEqual - A function to determine if two values are equal. Defaults to the equality function provided by this package.
  * @returns The number of times the element appears in the iterable.
@@ -128,6 +138,7 @@ export function countElement<Type>(iterable: Iterable<Type>, value: Type, areEqu
 
 /**
  * Creates a new array which contains only the values which appear the given number of times.
+ * @template Type - The type of the elements in the iterable.
  * @param iterable - The iterable to filter.
  * @param occurrences - The number of times an element needs to appear.
  * @param includeExcessOccurances - Whether or not to include items which appear more than the given number of times.
@@ -148,6 +159,7 @@ export function filterByCount<Type>(
 
 /**
  * Finds the most common element(s) in the iterable.
+ * @template Type - The type of the elements in the iterable.
  * @param iterable - The iterable to filter.
  * @param areEqual - A function to determine if two values are equal. Defaults to the equality function provided by this package.
  * @returns An array of the most common element(s) in the iterable.
@@ -162,6 +174,7 @@ export function getModes<Type>(iterable: Iterable<Type>, areEqual: EqualityFunct
 
 /**
  * Creates a new array, containing the original array, split into smaller arrays.
+ * @template Type - The type of the elements in the iterable.
  * @param iterable - The array to split.
  * @param maxLength - The maximum length of each subarray.
  * @returns The new array.
@@ -178,6 +191,7 @@ export function splitIterable<Type>(iterable: Iterable<Type>, maxLength: number)
 
 /**
  * Create a new array, removing any occurances of the given value.
+ * @template Type - The type of the elements in the iterable.
  * @param iterable - The array to remove the value from.
  * @param value - The value to remove.
  * @param areEqual - A function to determine if two values are equal. Defaults to the equality function provided by this package.
@@ -189,7 +203,8 @@ export function removeValue<Type>(iterable: Iterable<Type>, value: Type, areEqua
 
 /**
  * Creates a new array, containing the elements of the original array, in a random order.
- * @param iterable - The iterable to shuffle
+ * @template Type - The type of the elements in the iterable.
+ * @param iterable - The iterable to shuffle.
  * @returns The new array.
  */
 export function shuffle<Type>(iterable: Iterable<Type>): Type[] {
@@ -209,6 +224,7 @@ export function shuffle<Type>(iterable: Iterable<Type>): Type[] {
 
 /**
  * Just like `Array#indexOf(value)`, but this checks if any two values are equal rather than just their reference.
+ * @template Type - The type of the elements in the iterable.
  * @param iterable - The iterable to find the value in.
  * @param value - The value to find the index of.
  * @param areEqual - A function to determine if two values are equal. Defaults to the equality function provided by this package.

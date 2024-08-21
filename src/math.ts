@@ -18,6 +18,7 @@ export function mapRange(x: number, inMin: number, inMax: number, outMin: number
  * @returns Returns a random integer between 0 and b.
  */
 export function randomInt(maxValue: number): number;
+
 /**
  * Returns a random integer in the range [a, b).
  * @param minValue - The minimum possible value.
@@ -25,6 +26,7 @@ export function randomInt(maxValue: number): number;
  * @returns Returns a random integer between a and b.
  */
 export function randomInt(minValue: number, maxValue: number): number;
+
 /**
  * Returns a random integer in the range [a, b).
  * @param minValue - The minimum possible value.

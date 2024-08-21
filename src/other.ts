@@ -1,12 +1,12 @@
 /**
  * Takes in an string representing an amount of time and returns the equivalent number of milliseconds.
+ * @param str - The string representation of an amount of time.
+ * @returns The number of milliseconds, or null if the input is invalid.
  * @example
  * ```ts
  * parseTime("5m"); // 300000
  * parseTime("1h,5m"); // 3900000
  * ```
- * @param str - The string representation of an amount of time.
- * @returns The number of milliseconds, or null if the input is invalid.
  */
 export function parseTime(str: string): number | null {
     const regExp = {
@@ -59,7 +59,11 @@ export function parseTime(str: string): number | null {
 /**
  * A memoisation function to wrap around other functions.
  * This should wrap the function definition, not the function call.
- *
+ * @template Args - The types of the arguments of the function.
+ * @template Return - The return type of the function.
+ * @param fn - The function to be wrapped.
+ * @param serialise - A function to serialise the arguments to a string.
+ * @returns A memoised version of the function.
  * @example
  * ```ts
  * // This is how you should use this function:
@@ -69,10 +73,6 @@ export function parseTime(str: string): number | null {
  * const fibonacci = (n: number): number => (n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2));
  * memoise(fibonacci)(40);
  * ```
- *
- * @param fn - The function to be wrapped.
- * @param serialise - A function to serialise the arguments to a string.
- * @returns A memoised version of the function.
  */
 export function memoise<Args extends unknown[], Return>(
     fn: (...args: Args) => Return,
